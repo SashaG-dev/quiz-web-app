@@ -1,0 +1,68 @@
+@use '../../sass/abstracts/variables' as var;
+@use '../../sass/abstracts/mixins' as mix;
+
+.header {
+  margin-bottom: 1.6rem;
+
+  @include mix.respond(tab-sm) {
+    margin-bottom: 0;
+  }
+
+  &--desktop {
+    padding: 1.6rem 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mix.respond(desk-lg) {
+      max-width: 140rem;
+      margin: 0 auto;
+    }
+    @include mix.respond(phone-port) {
+      padding: 1.6rem;
+    }
+
+    .logo {
+      @include mix.respond(tab-sm) {
+        font-size: 2.4rem;
+      }
+
+      span {
+        @include mix.respond(phone-port) {
+          display: none;
+        }
+      }
+    }
+
+    .nav {
+      &__list {
+        list-style: none;
+        display: flex;
+        gap: 1.6rem;
+
+        @include mix.respond(phone-port) {
+          gap: 0.8rem;
+        }
+      }
+
+      &__link {
+        transition: var.$transitions;
+
+        &:link,
+        &:visited {
+          color: var(--dark-gray);
+          font-weight: 600;
+          text-decoration: none;
+          border-bottom: 2px solid transparent;
+        }
+
+        &:hover,
+        &:active,
+        &.active {
+          color: var(--black);
+          border-bottom: var.$border-black;
+        }
+      }
+    }
+  }
+}

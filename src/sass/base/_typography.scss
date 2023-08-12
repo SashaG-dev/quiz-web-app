@@ -1,0 +1,36 @@
+@use '../abstracts/mixins' as mix;
+
+body {
+  font-family: 'Bricolage Grotesque', Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+}
+
+p,
+li {
+  font-family: 'Barlow';
+  line-height: 1;
+}
+
+small {
+  font-size: 1.8rem;
+
+  @include mix.respond(phone-port) {
+    font-size: 1.4rem;
+  }
+}
+
+// Headings
+.heading-secondary {
+  font-size: 5rem;
+
+  @include mix.respond(tab-land) {
+    font-size: 4.2rem;
+  }
+  @include mix.respond(phone-land) {
+    font-size: 2.8rem;
+  }
+}
+
+.heading-tertiary {
+  font-size: 3.2rem;
+}

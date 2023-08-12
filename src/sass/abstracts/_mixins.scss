@@ -1,0 +1,56 @@
+@mixin centerFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin respond($breakpoint) {
+  // ~1600px
+  @if $breakpoint == desk-lg {
+    @media (min-width: 100em) {
+      @content;
+    }
+  }
+
+  // ~1800px
+  @if $breakpoint == screen-xl {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+
+  // ~1270px
+  @if $breakpoint == tab-land {
+    @media (max-width: 79.3em) {
+      @content;
+    }
+  }
+
+  // ~1045px
+  @if $breakpoint == tab-port {
+    @media (max-width: 65.3em) {
+      @content;
+    }
+  }
+
+  //~847px
+  @if $breakpoint == tab-sm {
+    @media (max-width: 52.9em) {
+      @content;
+    }
+  }
+
+  //~600px
+  @if $breakpoint == phone-land {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  //~480px
+  @if $breakpoint == phone-port {
+    @media (max-width: 30em) {
+      @content;
+    }
+  }
+}

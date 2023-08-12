@@ -1,0 +1,111 @@
+@use '../../../sass/abstracts/variables' as var;
+@use '../../../sass/abstracts/mixins' as mix;
+
+.carousel {
+  max-width: 116rem;
+  width: 80%;
+  height: 40rem;
+  margin: 0 auto;
+  margin-bottom: 9.6rem;
+  position: relative;
+
+  @include mix.respond(tab-port) {
+    height: 32rem;
+  }
+
+  @include mix.respond(tab-sm) {
+    width: 100%;
+  }
+
+  &__wrapper {
+    overflow-x: hidden;
+    border-radius: var.$radius-sm;
+
+    @include mix.respond(tab-sm) {
+      border-radius: 0;
+    }
+  }
+
+  &__container {
+    background-color: var(--white);
+    display: flex;
+    transition: var.$transitions;
+  }
+
+  &__btn {
+    @include mix.centerFlex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3.2rem;
+    color: var(--white);
+    background-color: var(--black);
+    border-radius: 50%;
+    border: var.$border-black;
+    padding: 0.8rem;
+    z-index: 5;
+    transition: var.$transitions;
+    cursor: pointer;
+
+    @include mix.respond(tab-sm) {
+      font-size: 2.2rem;
+      color: var(--black);
+      background-color: transparent;
+      border: none;
+    }
+    @include mix.respond(phone-port) {
+      font-size: 1.8rem;
+      padding: 0.4rem;
+    }
+
+    &:hover {
+      transform: translateY(-60%);
+    }
+
+    &--left {
+      left: -2rem;
+      @include mix.respond(tab-port) {
+        transform: translate(-100%, -50%);
+      }
+      @include mix.respond(tab-sm) {
+        transform: translate(0, -50%);
+        left: 0.4rem;
+      }
+      @include mix.respond(phone-port) {
+        left: 0;
+      }
+
+      &:hover {
+        @include mix.respond(tab-port) {
+          transform: translate(-100%, -50%);
+        }
+      }
+    }
+
+    &--right {
+      right: -2rem;
+      @include mix.respond(tab-port) {
+        transform: translate(100%, -50%);
+      }
+      @include mix.respond(tab-sm) {
+        transform: translate(0, -50%);
+        right: 0.4rem;
+      }
+      @include mix.respond(phone-port) {
+        right: 0;
+      }
+
+      &:hover {
+        @include mix.respond(tab-port) {
+          transform: translate(100%, -50%);
+        }
+      }
+    }
+
+    &:hover {
+      @include mix.respond(tab-sm) {
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

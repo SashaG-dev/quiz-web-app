@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.btn {
+  transition: var.$transitions;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 0.8rem 1.6rem;
+    border-radius: var.$radius-sm;
+  }
+
+  &:hover,
+  &:active {
+    color: var(--black);
+    background-color: var(--white);
+  }
+
+  &--blue {
+    &:link,
+    &:visited {
+      color: var(--black);
+      background-color: var(--blue);
+    }
+
+    &:hover,
+    &:active {
+      background-color: var(--white);
+    }
+  }
+}
+
+.container {
+  @include mix.respond(desk-lg) {
+    max-width: 140rem;
+    margin: 0 auto;
+  }
+}

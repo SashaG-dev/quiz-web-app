@@ -1,0 +1,81 @@
+@use '../../../sass/abstracts/variables' as var;
+@use '../../../sass/abstracts/mixins' as mix;
+
+.resources {
+  width: 95%;
+  max-width: 132rem;
+  margin: 0 auto;
+  margin-bottom: 4.8rem;
+  background-color: var(--intermediate);
+  padding: 4.8rem 6.4rem;
+  border-radius: var.$radius-md;
+
+  @include mix.respond(tab-port) {
+    width: 90%;
+  }
+
+  @include mix.respond(tab-sm) {
+    width: 100%;
+    border-radius: 0;
+    padding: 4.8rem 3.2rem;
+  }
+
+  &__text {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 3.2rem;
+
+    @include mix.respond(phone-land) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.resource-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  justify-items: start;
+
+  @include mix.respond(phone-land) {
+    row-gap: 0.8rem;
+  }
+  @include mix.respond(phone-port) {
+    grid-template-columns: 1fr;
+    margin-left: 0.8rem;
+  }
+
+  & a {
+    &:link,
+    &:visited {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      text-decoration: underline;
+    }
+
+    &:last-of-type {
+      @include mix.respond(tab-port) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  & li {
+    font-size: 2.4rem;
+
+    @include mix.respond(tab-sm) {
+      font-size: 2rem;
+    }
+
+    & svg {
+      width: 1.6rem;
+    }
+  }
+}

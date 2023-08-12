@@ -1,0 +1,21 @@
+:root {
+  --beginner: #b6e2a1;
+  --intermediate: #fcffb2;
+  --challenging: #febe8c;
+  --error: #f7a4a4;
+  --blue: #8ea7e9;
+  --black: #000;
+  --dark-gray: #555;
+  --light-gray: #bbb;
+  --light-gray2: #eee;
+  --white: #fff;
+  --background: #fffff9;
+}
+
+// BORDERS AND RADII
+$border-black: 1px solid #000;
+$radius-sm: 0.8rem;
+$radius-md: 1.6rem;
+
+// TRANSITIONS
+$transitions: all 0.3s;
