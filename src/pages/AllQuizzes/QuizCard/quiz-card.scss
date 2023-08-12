@@ -1,0 +1,59 @@
+@use '../../../sass/abstracts/variables' as var;
+
+.quiz-card {
+  max-width: 32rem;
+  padding: 1.6rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  border-radius: var.$radius-sm;
+  position: relative;
+  background-color: var(--white);
+
+  &__dot {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.6rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    & span {
+      display: none;
+    }
+
+    &:hover {
+      padding: 0.4rem;
+      height: auto;
+      width: auto;
+      border-radius: var.$radius-sm;
+
+      span {
+        display: inline;
+      }
+    }
+
+    &--begin {
+      background-color: var(--beginner);
+    }
+
+    &--inter {
+      background-color: var(--intermediate);
+      border: 1px solid var(--dark-gray);
+    }
+
+    &--chal {
+      background-color: var(--challenging);
+    }
+  }
+
+  &__details {
+    color: var(--dark-gray);
+  }
+
+  &__links {
+    display: flex;
+    gap: 1.6rem;
+    margin-top: 0.8rem;
+  }
+}

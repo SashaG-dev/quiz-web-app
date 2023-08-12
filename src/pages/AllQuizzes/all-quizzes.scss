@@ -1,0 +1,8 @@
+.all {
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+    gap: 1.6rem;
+    padding: 2.4rem;
+  }
+}
