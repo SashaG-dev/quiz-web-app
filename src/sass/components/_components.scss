@@ -51,7 +51,6 @@
 
 .container {
   @include mix.respond(desk-lg) {
-    max-width: 140rem;
     margin: 0 auto;
   }
 }

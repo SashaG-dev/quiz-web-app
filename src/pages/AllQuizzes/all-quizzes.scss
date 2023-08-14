@@ -1,10 +1,32 @@
+@use '../../sass/abstracts/mixins' as mix;
+
 .all {
   &-container {
+    max-width: 120rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-    gap: 1.6rem;
-    row-gap: 2.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+    column-gap: 1.6rem;
+    row-gap: 3.2rem;
     padding: 2.4rem;
     justify-items: center;
+    margin: auto;
+
+    @include mix.respond(laptop) {
+      max-width: 110rem;
+    }
+
+    @include mix.respond(tab-port) {
+      grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+      max-width: 90rem;
+    }
+
+    @include mix.respond(tab-sm) {
+      grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+      padding: 2.4rem 1.6rem;
+    }
+
+    @include mix.respond(phone-port) {
+      padding: 2.4rem 0.8rem;
+    }
   }
 }

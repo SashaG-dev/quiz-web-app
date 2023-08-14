@@ -19,6 +19,13 @@
     }
   }
 
+  // ~1360px
+  @if $breakpoint == laptop {
+    @media (max-width: 85em) {
+      @content;
+    }
+  }
+
   // ~1270px
   @if $breakpoint == tab-land {
     @media (max-width: 79.3em) {
