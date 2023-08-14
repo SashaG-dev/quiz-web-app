@@ -1,0 +1,40 @@
+@use '../../../sass/abstracts/variables' as var;
+
+.menu {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1.6rem 3.2rem;
+  justify-content: space-between;
+  gap: 1.6rem;
+
+  &__categories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    margin: 0 auto;
+  }
+
+  &__btn {
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    background-color: var(--white);
+    border: var.$border-black;
+    border-radius: var.$radius-sm;
+    cursor: pointer;
+
+    &.btn:hover,
+    &.btn:focus-visible,
+    &.active {
+      color: var(--white);
+      background-color: var(--black);
+    }
+
+    &.btn--underline:hover,
+    &.btn--underline:focus-visible {
+      color: var(--black);
+      background-color: transparent;
+    }
+  }
+}

@@ -2,18 +2,21 @@
 
 .quiz-card {
   max-width: 32rem;
-  padding: 1.6rem;
+  padding: 3.4rem 1.6rem;
   box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
   border-radius: var.$radius-sm;
   position: relative;
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &__dot {
     position: absolute;
     top: 0.8rem;
     right: 1.6rem;
-    height: 1.8rem;
-    width: 1.8rem;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s;

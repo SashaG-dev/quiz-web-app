@@ -3,6 +3,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
     gap: 1.6rem;
+    row-gap: 2.4rem;
     padding: 2.4rem;
+    justify-items: center;
   }
 }
