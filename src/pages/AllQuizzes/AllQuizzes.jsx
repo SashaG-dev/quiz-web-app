@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import Menu from './Menu/Menu';
 import QuizCard from './QuizCard/QuizCard';
+import NoQuizzes from './NoQuizzes/NoQuizzes';
 import './all-quizzes.scss';
 
 const AllQuizzes = () => {
@@ -29,9 +30,13 @@ const AllQuizzes = () => {
     <section className="all">
       <Menu />
       <div className="all-container container">
-        {displayQuizzes.map((quiz) => {
-          return <QuizCard key={quiz.details.title} {...quiz.details} />;
-        })}
+        {displayQuizzes.length ? (
+          displayQuizzes.map((quiz) => {
+            return <QuizCard key={quiz.details.title} {...quiz.details} />;
+          })
+        ) : (
+          <NoQuizzes />
+        )}
       </div>
     </section>
   );

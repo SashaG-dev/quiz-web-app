@@ -33,6 +33,17 @@ option {
 }
 
 // Headings
+.heading-primary {
+  font-size: 4.8rem;
+
+  @include mix.respond(phone-land) {
+    font-size: 3.6rem;
+  }
+  @include mix.respond(phone-port) {
+    font-size: 3.2rem;
+  }
+}
+
 .heading-secondary {
   font-size: 5rem;
 
@@ -41,6 +52,9 @@ option {
   }
   @include mix.respond(phone-land) {
     font-size: 2.8rem;
+  }
+  @include mix.respond(phone-port) {
+    font-size: 2rem;
   }
 }
 

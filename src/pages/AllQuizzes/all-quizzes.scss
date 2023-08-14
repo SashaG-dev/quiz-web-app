@@ -9,6 +9,7 @@
     row-gap: 3.2rem;
     padding: 2.4rem;
     justify-items: center;
+    align-items: start;
     margin: auto;
 
     @include mix.respond(laptop) {
