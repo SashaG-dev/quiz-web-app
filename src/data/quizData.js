@@ -8,6 +8,8 @@ export const quizzes = {
         difficulty: 'beginner',
         topics: 'booleans, variables, expressions, and more',
         link: 'js-fundamentals-1',
+        level: 1,
+        type: 'javascript',
       },
       questions: {
         1: {
@@ -85,6 +87,8 @@ export const quizzes = {
         difficulty: 'beginner',
         topics: 'functions, loops, DOM, and more',
         link: 'js-fundamentals-2',
+        level: 1,
+        type: 'javascript',
       },
       questions: {
         1: {
@@ -156,6 +160,30 @@ export const quizzes = {
             'a function that can be given a variable, and is treated like any other variable',
           example: '',
         },
+      },
+    },
+  },
+  react: {
+    reactBasics: {
+      details: {
+        title: 'React Basics',
+        total: 10,
+        difficulty: 'intermediate',
+        topics: 'useState, useEffect, JSX, and more',
+        link: 'react-basics',
+        level: 2,
+        type: 'react',
+      },
+    },
+    advancedReact: {
+      details: {
+        title: 'Advanced React',
+        total: 10,
+        difficulty: 'challenging',
+        topics: 'Context API, useRef, and more',
+        link: 'basic-react',
+        level: 3,
+        type: 'react',
       },
     },
   },

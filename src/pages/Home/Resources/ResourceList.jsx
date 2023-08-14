@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BsAsterisk } from 'react-icons/bs';
-import resourcesData from './resourcesData';
+import resourcesData from '../../../data/resourcesData';
 import './resource-list.scss';
 
 const ResourceList = () => {

@@ -21,14 +21,30 @@
 
   &--blue {
     &:link,
-    &:visited {
+    &:visited,
+    &:focus-visible {
       color: var(--black);
       background-color: var(--blue);
     }
 
     &:hover,
-    &:active {
+    &:active,
+    &:focus-visible {
       background-color: var(--white);
+    }
+  }
+
+  &--underline {
+    font-family: 'Barlow';
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      text-decoration: none;
     }
   }
 }

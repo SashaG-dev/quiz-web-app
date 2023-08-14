@@ -1,10 +1,17 @@
 @use '../abstracts/mixins' as mix;
 
+*,
+*::before,
+*::after {
+  font-family: inherit;
+}
+
 body {
   font-family: 'Bricolage Grotesque', Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
 }
 
+// Elements
 p,
 li {
   font-family: 'Barlow';
@@ -17,6 +24,12 @@ small {
   @include mix.respond(phone-port) {
     font-size: 1.4rem;
   }
+}
+
+select,
+option {
+  font-family: 'Barlow';
+  font-size: 1.8rem;
 }
 
 // Headings

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import CarouselCard from './CarouselCard/CarouselCard';
-import carouselCardData from './CarouselCard/carouselCardData';
+import carouselCardData from '../../../data/carouselCardData';
 import './carousel.scss';
 
 const Carousel = () => {
