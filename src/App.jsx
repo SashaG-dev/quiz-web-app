@@ -12,8 +12,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path="all-quizzes" element={<AllQuizzes />} />
         </Route>
-        <Route path="/quiz/:id">
-          <Route index element={<Quiz />} />
+        <Route path="/quiz">
+          <Route index element={<h1>Route Placeholder</h1>} />
+          <Route path=":id" element={<Quiz />} />
         </Route>
       </Routes>
     </BrowserRouter>

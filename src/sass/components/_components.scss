@@ -3,6 +3,7 @@
 
 .btn {
   transition: var.$transitions;
+  cursor: pointer;
 
   &:link,
   &:visited {
