@@ -26,9 +26,14 @@ small {
   }
 }
 
-label {
-  font-family: 'Barlow' !important;
+label,
+input[type='text'] {
+  font-family: 'Barlow';
   font-size: 1.8rem;
+}
+
+input[type='text'] {
+  font-size: 2.4rem;
 }
 
 // Headings

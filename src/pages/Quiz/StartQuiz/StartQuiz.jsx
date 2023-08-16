@@ -58,7 +58,10 @@ const StartQuiz = () => {
             </label>
           </div>
 
-          <button className="start__btn btn" onClick={(e) => handleStart(e)}>
+          <button
+            className="start__btn btn btn--blue"
+            onClick={(e) => handleStart(e)}
+          >
             Let's Start
           </button>
         </form>

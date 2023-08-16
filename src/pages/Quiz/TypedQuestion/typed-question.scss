@@ -1,0 +1,8 @@
+@use '../../../sass/abstracts/mixins' as mix;
+
+.typed-question {
+  @include mix.centerFlex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 1.6rem;
+}

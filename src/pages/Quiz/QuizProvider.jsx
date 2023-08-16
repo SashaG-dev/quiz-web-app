@@ -6,9 +6,10 @@ import { quizReducer } from './quizReducer';
 const initialState = {
   score: 0,
   index: 0,
-  questions: [],
+  multipleQuestions: [],
   quizStatus: 'waiting',
   quizType: 'multiple',
+  answers: [],
 };
 
 const QuizContext = createContext();

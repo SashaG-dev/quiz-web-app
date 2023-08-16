@@ -4,14 +4,15 @@
 .btn {
   transition: var.$transitions;
   cursor: pointer;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.8rem 1.6rem;
+  border-radius: var.$radius-sm;
+  border: none;
 
   &:link,
   &:visited {
     text-decoration: none;
-    background-color: var(--black);
-    color: var(--white);
-    padding: 0.8rem 1.6rem;
-    border-radius: var.$radius-sm;
   }
 
   &:hover,
@@ -21,12 +22,8 @@
   }
 
   &--blue {
-    &:link,
-    &:visited,
-    &:focus-visible {
-      color: var(--black);
-      background-color: var(--blue);
-    }
+    color: var(--black);
+    background-color: var(--blue);
 
     &:hover,
     &:active,
@@ -38,7 +35,6 @@
   &--underline {
     font-family: 'Barlow';
     background-color: transparent;
-    border: none;
     text-decoration: underline;
     padding: 0;
 
@@ -51,6 +47,8 @@
 }
 
 .container {
+  min-height: 100vh;
+
   @include mix.respond(desk-lg) {
     margin: 0 auto;
   }
