@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useQuizContext } from './QuizProvider';
 import StartQuiz from './StartQuiz/StartQuiz';
 import TypedQuestion from './TypedQuestion/TypedQuestion';
@@ -9,10 +10,14 @@ const Quiz = () => {
     <div>
       {quizStatus === 'waiting' && <StartQuiz />}
 
-      {quizStatus === 'starting' && quizType === 'text' ? (
-        <TypedQuestion />
+      {quizStatus === 'starting' ? (
+        quizType === 'text' ? (
+          <TypedQuestion />
+        ) : (
+          <p>Placeholder</p>
+        )
       ) : (
-        <p>Placeholder</p>
+        ''
       )}
 
       {quizStatus === 'finishing' && <p>Placeholder</p>}

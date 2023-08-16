@@ -32,6 +32,19 @@
     }
   }
 
+  &--white {
+    color: var(--black);
+    background-color: var(--white);
+    border: var.$border-black;
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      color: var(--white);
+      background-color: var(--black);
+    }
+  }
+
   &--underline {
     font-family: 'Barlow';
     background-color: transparent;

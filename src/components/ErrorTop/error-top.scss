@@ -1,0 +1,15 @@
+@use '../../sass/abstracts/variables' as var;
+
+.error-top {
+  position: absolute;
+  top: 3.2rem;
+  background-color: var(--white);
+  padding: 1.6rem;
+  border-radius: var.$radius-sm;
+  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.1);
+
+  &__text {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}

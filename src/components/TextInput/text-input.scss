@@ -11,16 +11,15 @@
   }
 
   &__input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 3px solid var(--black);
+    border: 3px solid var(--dark-gray);
+    border-radius: 0.4rem;
     padding: 0.8rem;
     width: 32rem;
     transition: var.$transitions;
 
     &:focus {
       outline: none;
-      border-bottom: 3px solid var(--blue);
+      border: 3px solid var(--blue);
     }
   }
 }
