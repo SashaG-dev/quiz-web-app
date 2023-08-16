@@ -1,6 +1,14 @@
-import { QuizProvider } from './QuizProvider';
+import { useQuizContext } from './QuizProvider';
+import StartQuiz from './StartQuiz/StartQuiz';
 
 const Quiz = () => {
-  return <QuizProvider></QuizProvider>;
+  const { quizStatus, quizType, index } = useQuizContext();
+
+  return (
+    <div>
+      {quizStatus === 'waiting' && <StartQuiz />}
+      {}
+    </div>
+  );
 };
 export default Quiz;

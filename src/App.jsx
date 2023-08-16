@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home/Home';
 import AllQuizzes from './pages/AllQuizzes/AllQuizzes';
-import Quiz from './pages/Quiz/Quiz';
+import QuizLayout from './pages/Quiz/QuizLayout';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
           <Route path="all-quizzes" element={<AllQuizzes />} />
         </Route>
         <Route path="/quiz">
-          <Route index element={<h1>Route Placeholder</h1>} />
-          <Route path=":id" element={<Quiz />} />
+          <Route index element={<h1>Placeholder</h1>} />
+          <Route path=":id" element={<QuizLayout />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -8,13 +8,13 @@ const initialState = {
   index: 0,
   questions: [],
   quizStatus: 'waiting',
-  quizType: '',
+  quizType: 'multiple',
 };
 
-export const QuizContext = createContext();
-export const useQuizContext = () => useContext(QuizContext);
+const QuizContext = createContext();
+const useQuizContext = () => useContext(QuizContext);
 
-export const QuizProvider = ({ children }) => {
+const QuizProvider = ({ children }) => {
   const { allQuizzes } = useGlobalContext();
   const { id } = useParams();
   // TODO: fetch data from API
@@ -29,3 +29,5 @@ export const QuizProvider = ({ children }) => {
     </QuizContext.Provider>
   );
 };
+
+export { QuizProvider, useQuizContext };
