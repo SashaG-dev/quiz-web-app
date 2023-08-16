@@ -1,0 +1,26 @@
+@use '../../sass/abstracts/variables' as var;
+@use '../../sass/abstracts/mixins' as mix;
+
+.text-input {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__label {
+    font-size: 3.2rem;
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid var(--black);
+    padding: 0.8rem;
+    width: 32rem;
+    transition: var.$transitions;
+
+    &:focus {
+      outline: none;
+      border-bottom: 3px solid var(--blue);
+    }
+  }
+}
