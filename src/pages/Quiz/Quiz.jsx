@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuizContext } from './QuizProvider';
 import StartQuiz from './StartQuiz/StartQuiz';
+import FinishQuiz from './FinishQuiz/FinishQuiz';
 import TypedQuestion from './TypedQuestion/TypedQuestion';
 
 const Quiz = () => {
@@ -20,7 +21,7 @@ const Quiz = () => {
         ''
       )}
 
-      {quizStatus === 'finishing' && <p>Placeholder</p>}
+      {quizStatus === 'finishing' && <FinishQuiz />}
     </div>
   );
 };
