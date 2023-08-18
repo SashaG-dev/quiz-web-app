@@ -1,0 +1,20 @@
+@use '../../../sass/abstracts/mixins' as mix;
+
+.finish {
+  padding: 2.4rem 3.2rem;
+  gap: 1.6rem;
+
+  &__num {
+    font-size: 2.4rem;
+  }
+
+  &,
+  &__answers-container {
+    @include mix.centerFlex;
+    flex-direction: column;
+  }
+
+  &__answers-container {
+    gap: 3.2rem;
+  }
+}

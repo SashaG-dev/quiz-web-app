@@ -8,6 +8,11 @@
 
   &__label {
     font-size: 3.2rem;
+    text-align: center;
+
+    @include mix.respond(phone-land) {
+      font-size: 2.8rem;
+    }
   }
 
   &__input {
@@ -16,6 +21,11 @@
     padding: 0.8rem;
     width: 32rem;
     transition: var.$transitions;
+
+    @include mix.respond(phone-land) {
+      width: 24rem;
+      padding: 0.6rem;
+    }
 
     &:focus {
       outline: none;

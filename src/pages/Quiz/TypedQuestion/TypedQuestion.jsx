@@ -46,7 +46,7 @@ const TypedQuestion = () => {
       />
 
       <div className="typed-question__btn-container">
-        {index !== 9 ? (
+        {index + 1 !== Object.values(questions).length ? (
           <Button title={'Next Question'} func={handleClick} />
         ) : (
           <Button title={'Finish Quiz'} func={handleClick} />

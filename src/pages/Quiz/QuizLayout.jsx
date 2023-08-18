@@ -14,9 +14,9 @@ const QuizLayout = () => {
 
   return (
     <div className="quiz-layout">
-      <Link to="/all-quizzes" style={linkStyle}>
+      {/* <Link to="/all-quizzes" style={linkStyle}>
         &larr; All quizzes
-      </Link>
+      </Link> */}
       <QuizProvider>
         <Quiz />
       </QuizProvider>

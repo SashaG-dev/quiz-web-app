@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuizContext } from '../QuizProvider';
+import QuizResult from './QuizResult/QuizResult';
+import './finish-quiz.scss';
 
 const FinishQuiz = () => {
   const { questions, answers } = useQuizContext();
@@ -9,27 +11,33 @@ const FinishQuiz = () => {
     const quizQuestions = Object.values(questions);
     const allAnswers = quizQuestions.map((question, i) => {
       if (question.answer === answers[i]) return;
-      return [answers[i], question, i];
+      return {
+        id: question.id,
+        answer: question.answer,
+        question: question.question,
+        userAnswer: answers[i],
+        i,
+      };
     });
     setCompareAnswers(allAnswers);
   }, []);
 
+  const correctAnswers =
+    answers.length - compareAnswers.filter((answer) => answer).length;
+
+  console.log(compareAnswers);
+
   return (
-    // Testing Only
-    <div>
-      {compareAnswers.map((answer) =>
-        !answer ? (
-          ''
-        ) : (
-          <div>
-            <h1>
-              {answer[2] + 1} {answer[1].question}
-            </h1>
-            <p>Your answer: {answer[0]}</p>
-            <p>Correct answer: {answer[1].answer}</p>
-          </div>
-        )
-      )}
+    <div className="finish container">
+      <h2 className="heading-secondary finish__heading">Your Results:</h2>
+      <p className="finish__num">
+        {correctAnswers} out of {answers.length}
+      </p>
+      <div className="finish__answers-container">
+        {compareAnswers.map((answer) =>
+          answer ? <QuizResult key={answer.id} {...answer} /> : ''
+        )}
+      </div>
     </div>
   );
 };

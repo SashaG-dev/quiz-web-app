@@ -1,3 +1,9 @@
+@use '../../sass/abstracts/mixins' as mix;
+
 .button {
   font-size: 2.4rem;
+
+  @include mix.respond(phone-port) {
+    font-size: 2rem;
+  }
 }
