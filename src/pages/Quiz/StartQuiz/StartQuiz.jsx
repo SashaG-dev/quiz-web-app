@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useQuizContext } from '../QuizProvider';
 import { CHANGE_TYPE, START_QUIZ } from '../quizReducer';
 import './start-quiz.scss';
@@ -5,6 +6,34 @@ import './start-quiz.scss';
 const StartQuiz = () => {
   const { details, dispatch, quizType } = useQuizContext();
   const { title, difficulty, total } = details;
+
+  useEffect(() => {
+    const labels = document.querySelectorAll('.start__label');
+
+    const handleKeyUp = (e) => {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        const newType = e.target.htmlFor;
+        dispatch({ type: CHANGE_TYPE, payload: { typeName: newType } });
+      }
+    };
+
+    labels.forEach((label) => {
+      label.addEventListener('keyup', handleKeyUp);
+    });
+
+    return () => {
+      labels.forEach((label) =>
+        label.removeEventListener('keyup', handleKeyUp)
+      );
+    };
+  }, [quizType]);
+
+  const handleChange = (name) => {
+    dispatch({
+      type: CHANGE_TYPE,
+      payload: { typeName: name },
+    });
+  };
 
   const handleStart = (e) => {
     e.preventDefault();
@@ -23,7 +52,7 @@ const StartQuiz = () => {
             Pick your quiz style:
           </h3>
           <div className="start__row">
-            <label htmlFor="multiple" className="start__label">
+            <label htmlFor="multiple" className="start__label" tabIndex={0}>
               <input
                 type="radio"
                 name="type"
@@ -31,17 +60,12 @@ const StartQuiz = () => {
                 value="multiple"
                 className="start__radio"
                 checked={quizType === 'multiple'}
-                onChange={() =>
-                  dispatch({
-                    type: CHANGE_TYPE,
-                    payload: { typeName: 'multiple' },
-                  })
-                }
+                onChange={() => handleChange('multiple')}
               />
               <span>&nbsp;</span>
               Multiple Choice
             </label>
-            <label htmlFor="text" className="start__label">
+            <label htmlFor="text" className="start__label" tabIndex={0}>
               <input
                 type="radio"
                 name="type"
@@ -49,9 +73,7 @@ const StartQuiz = () => {
                 value="radio"
                 className="start__radio"
                 checked={quizType === 'text'}
-                onChange={() =>
-                  dispatch({ type: CHANGE_TYPE, payload: { typeName: 'text' } })
-                }
+                onChange={() => handleChange('text')}
               />
               <span>&nbsp;</span>
               Typed Answers
