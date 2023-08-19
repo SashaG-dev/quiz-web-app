@@ -16,7 +16,8 @@
   }
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus-visible {
     color: var(--black);
     background-color: var(--white);
   }
@@ -65,4 +66,15 @@
   @include mix.respond(desk-lg) {
     margin: 0 auto;
   }
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(5px);
+  z-index: 10;
 }

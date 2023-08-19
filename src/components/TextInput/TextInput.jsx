@@ -1,14 +1,17 @@
+import { forwardRef } from 'react';
 import './text-input.scss';
 
-const TextInput = ({
-  name,
-  id,
-  value,
-  func,
-  title,
-  number,
-  placeholder = 'Enter text here',
-}) => {
+const TextInput = forwardRef(function TextInput(props, ref) {
+  const {
+    name,
+    id,
+    value,
+    func,
+    title,
+    number,
+    placeholder = 'Enter text here',
+  } = props;
+
   return (
     <div className="text-input">
       <label htmlFor={id} className="text-input__label mb-md">
@@ -23,8 +26,9 @@ const TextInput = ({
         className="text-input__input"
         onChange={(e) => func(e)}
         placeholder={placeholder}
+        ref={ref}
       />
     </div>
   );
-};
+});
 export default TextInput;

@@ -25,10 +25,8 @@ const FinishQuiz = () => {
   const correctAnswers =
     answers.length - compareAnswers.filter((answer) => answer).length;
 
-  console.log(compareAnswers);
-
   return (
-    <div className="finish container">
+    <div className="finish">
       <h2 className="heading-secondary finish__heading">Your Results:</h2>
       <p className="finish__num">
         {correctAnswers} out of {answers.length}

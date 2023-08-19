@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useQuizContext } from '../QuizProvider';
 import { TOGGLE_QUIZ } from '../quizReducer';
 import TextInput from '../../../components/TextInput/TextInput';
@@ -10,6 +10,11 @@ const TypedQuestion = () => {
   const [inputAnswer, setInputAnswer] = useState('');
   const [toggleError, setToggleError] = useState(false);
   const { questions, index, dispatch } = useQuizContext();
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [index]);
 
   const handleChange = (e) => {
     setToggleError(false);
@@ -30,19 +35,16 @@ const TypedQuestion = () => {
     setInputAnswer('');
   };
 
-  const setPlaceholder = () => {
-    return index < 1 ? 'Answer here!' : '';
-  };
-
   return (
-    <div className="typed-question container">
+    <div className="typed-question">
       {toggleError && <ErrorTop text="✋ Wait! Enter an answer first." />}
       <TextInput
         title={questions[index + 1].question}
         number={index + 1}
         value={inputAnswer}
         func={handleChange}
-        placeholder={setPlaceholder()}
+        placeholder={index < 1 ? 'Answer here!' : ''}
+        ref={inputRef}
       />
 
       <div className="typed-question__btn-container">

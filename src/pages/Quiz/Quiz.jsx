@@ -1,27 +1,73 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useQuizContext } from './QuizProvider';
+import { BsArrowLeft } from 'react-icons/bs';
 import StartQuiz from './StartQuiz/StartQuiz';
 import FinishQuiz from './FinishQuiz/FinishQuiz';
 import TypedQuestion from './TypedQuestion/TypedQuestion';
+import CloseModal from '../../components/Modals/CloseModal';
+import './quiz.scss';
 
 const Quiz = () => {
   const { quizStatus, quizType, index, answers } = useQuizContext();
+  const [toggleModal, setToggleModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handleModal = () => {
+    if (quizStatus === 'starting') {
+      setToggleModal(true);
+    } else navigate('/all-quizzes');
+  };
+
+  const closeModal = () => {
+    setToggleModal(false);
+  };
+
+  const goBack = () => {
+    navigate('/all-quizzes');
+  };
 
   return (
-    <div>
-      {quizStatus === 'waiting' && <StartQuiz />}
-
-      {quizStatus === 'starting' ? (
-        quizType === 'text' ? (
-          <TypedQuestion />
-        ) : (
-          <p>Placeholder</p>
-        )
-      ) : (
-        ''
+    <div className="quiz container">
+      {toggleModal && (
+        <CloseModal
+          text="Are you sure you want to go?"
+          subheading="None of your progress will be saved!"
+          func={goBack}
+          closeModal={closeModal}
+          btnText="Back to quizzes"
+        />
       )}
+      <nav className="quiz__nav">
+        <ul className="quiz__nav-links">
+          <button
+            type="button"
+            className="quiz__btn btn"
+            title="Go back to all quizzes"
+            onClick={handleModal}
+          >
+            <BsArrowLeft /> Go Back
+          </button>
 
-      {quizStatus === 'finishing' && <FinishQuiz />}
+          {quizStatus === 'finishing' && <p>placeholder</p>}
+        </ul>
+      </nav>
+
+      <div className="quiz__container">
+        {quizStatus === 'waiting' && <StartQuiz />}
+
+        {quizStatus === 'starting' ? (
+          quizType === 'text' ? (
+            <TypedQuestion />
+          ) : (
+            <p>Placeholder</p>
+          )
+        ) : (
+          ''
+        )}
+
+        {quizStatus === 'finishing' && <FinishQuiz />}
+      </div>
     </div>
   );
 };

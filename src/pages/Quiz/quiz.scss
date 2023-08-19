@@ -1,0 +1,23 @@
+@use '../../sass/abstracts/mixins' as mix;
+
+.quiz {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  height: 100%;
+  position: relative;
+
+  &__nav {
+    padding: 1.6rem;
+  }
+
+  &__btn {
+    @include mix.centerFlex;
+    gap: 0.4rem;
+    font-size: 1.6rem;
+  }
+
+  &__container {
+    justify-self: center;
+    align-self: center;
+  }
+}
