@@ -1,6 +1,7 @@
 export const CHANGE_TYPE = 'CHANGE_TYPE';
 export const START_QUIZ = 'START_QUIZ';
 export const TOGGLE_QUIZ = 'TOGGLE_QUIZ';
+export const REDO_QUIZ = 'REDO_QUIZ';
 
 export const quizReducer = (state, action) => {
   if (action.type === CHANGE_TYPE) {
@@ -24,5 +25,8 @@ export const quizReducer = (state, action) => {
       answers: [...state.answers, inputAnswer],
       quizStatus: 'finishing',
     };
+  }
+  if (action.type === REDO_QUIZ) {
+    return { ...state, quizStatus: 'waiting', index: 0, answers: [] };
   }
 };

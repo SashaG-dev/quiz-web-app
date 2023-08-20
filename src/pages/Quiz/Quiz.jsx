@@ -5,11 +5,13 @@ import { BsArrowLeft } from 'react-icons/bs';
 import StartQuiz from './StartQuiz/StartQuiz';
 import FinishQuiz from './FinishQuiz/FinishQuiz';
 import TypedQuestion from './TypedQuestion/TypedQuestion';
+import Button from '../../components/Button/Button';
 import CloseModal from '../../components/Modals/CloseModal';
+import { REDO_QUIZ } from './quizReducer';
 import './quiz.scss';
 
 const Quiz = () => {
-  const { quizStatus, quizType, index, answers } = useQuizContext();
+  const { quizStatus, quizType, index, answers, dispatch } = useQuizContext();
   const [toggleModal, setToggleModal] = useState(false);
   const navigate = useNavigate();
 
@@ -25,6 +27,10 @@ const Quiz = () => {
 
   const goBack = () => {
     navigate('/all-quizzes');
+  };
+
+  const redoQuiz = () => {
+    dispatch({ type: REDO_QUIZ });
   };
 
   return (
@@ -49,7 +55,9 @@ const Quiz = () => {
             <BsArrowLeft /> Go Back
           </button>
 
-          {quizStatus === 'finishing' && <p>placeholder</p>}
+          {quizStatus === 'finishing' && (
+            <Button title="Restart" func={redoQuiz} />
+          )}
         </ul>
       </nav>
 
