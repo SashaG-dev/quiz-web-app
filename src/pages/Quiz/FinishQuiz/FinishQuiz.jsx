@@ -27,10 +27,20 @@ const FinishQuiz = () => {
 
   return (
     <div className="finish">
-      <h2 className="heading-secondary finish__heading">Your Results:</h2>
-      <p className="finish__num">
-        {correctAnswers} out of {answers.length}
-      </p>
+      <div className="finish__text-container mb-md">
+        <h2 className="heading-secondary finish__heading mb-sm">
+          {correctAnswers === answers.length ? 'Nice work!' : 'All done!'}
+          <br /> You scored:
+        </h2>
+        <p
+          className={`finish__total ${
+            correctAnswers === answers.length ? 'finish__total--all' : ''
+          }`}
+        >
+          <span>{correctAnswers}</span> <br />
+          out of {answers.length}
+        </p>
+      </div>
       <div className="finish__answers-container">
         {compareAnswers.map((answer) =>
           answer ? <QuizResult key={answer.id} {...answer} /> : ''

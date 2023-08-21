@@ -5,6 +5,7 @@
   &__label {
     @include mix.centerFlex;
     font-size: 2.8rem;
+    text-align: center;
     background-color: var(--white);
     border: 2px solid var(--dark-gray);
     border-radius: 100px;
