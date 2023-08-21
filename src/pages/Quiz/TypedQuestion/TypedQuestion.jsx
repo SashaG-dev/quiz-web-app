@@ -27,7 +27,7 @@ const TypedQuestion = () => {
       setToggleError(true);
       return;
     }
-    const payloadType = index !== 9 ? 'next' : 'finish';
+    const payloadType = index !== questions.length - 1 ? 'next' : 'finish';
     dispatch({
       type: TOGGLE_QUIZ,
       payload: { inputAnswer: inputAnswer.toLowerCase().trim(), payloadType },

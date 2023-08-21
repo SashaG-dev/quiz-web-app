@@ -1,0 +1,36 @@
+@use '../../../sass/abstracts/mixins' as mix;
+
+.radio-question {
+  @include mix.centerFlex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 0.8rem 1.6rem;
+
+  &__heading {
+    font-family: 'Barlow';
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 500;
+
+    @include mix.respond(tab-sm) {
+      font-size: 2.8rem;
+    }
+    @include mix.respond(phone-port) {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2.4rem;
+    column-gap: 3.2rem;
+    width: 100%;
+
+    @include mix.respond(tab-sm) {
+      grid-template-columns: 1fr;
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+}

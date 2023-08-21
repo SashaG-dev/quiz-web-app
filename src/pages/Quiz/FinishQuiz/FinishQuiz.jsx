@@ -10,7 +10,7 @@ const FinishQuiz = () => {
   useEffect(() => {
     const quizQuestions = Object.values(questions);
     const allAnswers = quizQuestions.map((question, i) => {
-      if (question.answer === answers[i]) return;
+      if (question.answer.toLowerCase() === answers[i].toLowerCase()) return;
       return {
         id: question.id,
         answer: question.answer,
