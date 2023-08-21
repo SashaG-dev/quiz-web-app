@@ -5,6 +5,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import StartQuiz from './StartQuiz/StartQuiz';
 import FinishQuiz from './FinishQuiz/FinishQuiz';
 import TypedQuestion from './TypedQuestion/TypedQuestion';
+import RadioQuestion from './RadioQuestion/RadioQuestion';
 import Button from '../../components/Button/Button';
 import CloseModal from '../../components/Modals/CloseModal';
 import { REDO_QUIZ } from './quizReducer';
@@ -68,7 +69,7 @@ const Quiz = () => {
           quizType === 'text' ? (
             <TypedQuestion />
           ) : (
-            <h1>Placeholder</h1>
+            <RadioQuestion />
           )
         ) : (
           ''
