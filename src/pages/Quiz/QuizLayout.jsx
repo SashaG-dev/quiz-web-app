@@ -1,15 +1,16 @@
-import { createContext, useContext, useReducer } from 'react';
-import { defer, useLoaderData } from 'react-router-dom';
+import { createContext, useContext, useReducer, Suspense } from 'react';
+import { defer, useLoaderData, Await } from 'react-router-dom';
 import Quiz from './Quiz';
+import Loading from '../../components/Loading/Loading';
 import { quizReducer } from './quizReducer';
 import { getQuiz } from '../../api/api';
 
 export const loader = async ({ params }) => {
   try {
     const { id } = params;
-    const quizPromise = await getQuiz(id);
-    return defer({ quiz: quizPromise });
+    return defer({ quiz: getQuiz(id) });
   } catch (err) {
+    console.error(err);
     throw err;
   }
 };
@@ -21,7 +22,6 @@ const QuizLayout = () => {
   const initialState = {
     score: 0,
     index: 0,
-    multipleQuestions: [],
     quizStatus: 'waiting',
     quizType: 'multiple',
     answers: [],
@@ -32,9 +32,17 @@ const QuizLayout = () => {
   const { quiz } = useLoaderData();
 
   return (
-    <QuizContext.Provider value={{ ...quiz, ...state, dispatch }}>
-      <Quiz />
-    </QuizContext.Provider>
+    <Suspense fallback={<Loading />}>
+      <Await resolve={quiz}>
+        {(quiz) => {
+          return (
+            <QuizContext.Provider value={{ ...quiz, ...state, dispatch }}>
+              <Quiz />
+            </QuizContext.Provider>
+          );
+        }}
+      </Await>
+    </Suspense>
   );
 };
 
