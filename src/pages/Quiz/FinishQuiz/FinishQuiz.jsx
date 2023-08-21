@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useQuizContext } from '../QuizProvider';
+import { useQuizContext } from '../QuizLayout';
 import QuizResult from './QuizResult/QuizResult';
 import './finish-quiz.scss';
 

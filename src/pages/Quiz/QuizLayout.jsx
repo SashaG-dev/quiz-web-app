@@ -1,26 +1,41 @@
-import { Link } from 'react-router-dom';
-import { QuizProvider } from './QuizProvider';
+import { createContext, useContext, useReducer } from 'react';
+import { defer, useLoaderData } from 'react-router-dom';
 import Quiz from './Quiz';
+import { quizReducer } from './quizReducer';
+import { getQuiz } from '../../api/api';
+
+export const loader = async ({ params }) => {
+  try {
+    const { id } = params;
+    const quizPromise = await getQuiz(id);
+    return defer({ quiz: quizPromise });
+  } catch (err) {
+    throw err;
+  }
+};
+
+const QuizContext = createContext();
+export const useQuizContext = () => useContext(QuizContext);
 
 const QuizLayout = () => {
-  const linkStyle = {
-    position: 'absolute',
-    top: '3.2rem',
-    left: '3.2rem',
-    color: 'var(--black)',
-    textDecoration: 'underline',
-    zIndex: '5',
+  const initialState = {
+    score: 0,
+    index: 0,
+    multipleQuestions: [],
+    quizStatus: 'waiting',
+    quizType: 'multiple',
+    answers: [],
   };
 
+  const [state, dispatch] = useReducer(quizReducer, initialState);
+
+  const { quiz } = useLoaderData();
+
   return (
-    <div className="quiz-layout">
-      {/* <Link to="/all-quizzes" style={linkStyle}>
-        &larr; All quizzes
-      </Link> */}
-      <QuizProvider>
-        <Quiz />
-      </QuizProvider>
-    </div>
+    <QuizContext.Provider value={{ ...quiz, ...state, dispatch }}>
+      <Quiz />
+    </QuizContext.Provider>
   );
 };
+
 export default QuizLayout;

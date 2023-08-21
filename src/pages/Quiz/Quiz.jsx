@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuizContext } from './QuizProvider';
+import { useQuizContext } from './QuizLayout';
 import { BsArrowLeft } from 'react-icons/bs';
 import StartQuiz from './StartQuiz/StartQuiz';
 import FinishQuiz from './FinishQuiz/FinishQuiz';
@@ -68,7 +68,7 @@ const Quiz = () => {
           quizType === 'text' ? (
             <TypedQuestion />
           ) : (
-            <p>Placeholder</p>
+            <h1>Placeholder</h1>
           )
         ) : (
           ''

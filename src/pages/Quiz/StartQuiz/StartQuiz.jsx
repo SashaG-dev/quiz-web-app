@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useQuizContext } from '../QuizProvider';
+import { useQuizContext } from '../QuizLayout';
 import { CHANGE_TYPE, START_QUIZ } from '../quizReducer';
 import './start-quiz.scss';
 

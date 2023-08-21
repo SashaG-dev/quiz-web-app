@@ -1,12 +1,26 @@
-import { useSearchParams } from 'react-router-dom';
-import { useGlobalContext } from '../../context/context';
+import { Suspense } from 'react';
+import { useSearchParams, defer, useLoaderData, Await } from 'react-router-dom';
 import Menu from './Menu/Menu';
 import QuizCard from './QuizCard/QuizCard';
 import NoQuizzes from './NoQuizzes/NoQuizzes';
+import { getAllQuizzes } from '../../api/api';
 import './all-quizzes.scss';
 
+export const loader = async () => {
+  try {
+    const quizzesPromise = await getAllQuizzes();
+    return defer({ allQuizzes: quizzesPromise });
+  } catch (err) {
+    console.error(err);
+    throw {
+      message:
+        "Uh-oh! Couldn't load quizzes. Check your connection and try again.",
+    };
+  }
+};
+
 const AllQuizzes = () => {
-  const { allQuizzes } = useGlobalContext();
+  const { allQuizzes } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const filterType = searchParams.get('type');
@@ -28,16 +42,20 @@ const AllQuizzes = () => {
 
   return (
     <section className="all">
-      <Menu />
-      <div className="all-container container">
-        {displayQuizzes.length ? (
-          displayQuizzes.map((quiz) => {
-            return <QuizCard key={quiz.details.title} {...quiz.details} />;
-          })
-        ) : (
-          <NoQuizzes />
-        )}
-      </div>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <Await resolve={allQuizzes}>
+          <Menu />
+          <div className="all-container container">
+            {displayQuizzes.length ? (
+              displayQuizzes.map((quiz) => {
+                return <QuizCard key={quiz.details.title} {...quiz.details} />;
+              })
+            ) : (
+              <NoQuizzes />
+            )}
+          </div>
+        </Await>
+      </Suspense>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useQuizContext } from '../QuizProvider';
+import { useQuizContext } from '../QuizLayout';
 import { TOGGLE_QUIZ } from '../quizReducer';
 import TextInput from '../../../components/TextInput/TextInput';
 import Button from '../../../components/Button/Button';
@@ -39,7 +39,7 @@ const TypedQuestion = () => {
     <div className="typed-question">
       {toggleError && <ErrorTop text="✋ Wait! Enter an answer first." />}
       <TextInput
-        title={questions[index + 1].question}
+        title={questions[index].question}
         number={index + 1}
         value={inputAnswer}
         func={handleChange}
@@ -48,7 +48,7 @@ const TypedQuestion = () => {
       />
 
       <div className="typed-question__btn-container">
-        {index + 1 !== Object.values(questions).length ? (
+        {index + 1 !== questions.length ? (
           <Button title={'Next Question'} func={handleClick} />
         ) : (
           <Button title={'Finish Quiz'} func={handleClick} />
