@@ -4,12 +4,12 @@ import Menu from './Menu/Menu';
 import QuizCard from './QuizCard/QuizCard';
 import NoQuizzes from './NoQuizzes/NoQuizzes';
 import { getAllQuizzes } from '../../api/api';
+import Loading from '../../components/Loading/Loading';
 import './all-quizzes.scss';
 
 export const loader = async () => {
   try {
-    const quizzesPromise = await getAllQuizzes();
-    return defer({ allQuizzes: quizzesPromise });
+    return defer({ allQuizzes: getAllQuizzes() });
   } catch (err) {
     console.error(err);
     throw {
@@ -27,33 +27,40 @@ const AllQuizzes = () => {
   const filterDifficulty = searchParams.get('difficulty');
   const filterName = searchParams.get('title');
 
-  const displayQuizzes = allQuizzes.filter((quiz) => {
-    if (filterType) {
-      return quiz.details.type === filterType;
-    }
-    if (filterDifficulty) {
-      return quiz.details.difficulty === filterDifficulty;
-    }
-    if (filterName) {
-      return quiz.details.link.includes(filterName);
-    }
-    return quiz;
-  });
-
   return (
     <section className="all">
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Loading />}>
         <Await resolve={allQuizzes}>
-          <Menu />
-          <div className="all-container container">
-            {displayQuizzes.length ? (
-              displayQuizzes.map((quiz) => {
-                return <QuizCard key={quiz.details.title} {...quiz.details} />;
-              })
-            ) : (
-              <NoQuizzes />
-            )}
-          </div>
+          {(allQuizzes) => {
+            const displayQuizzes = allQuizzes.filter((quiz) => {
+              if (filterType) {
+                return quiz.details.type === filterType;
+              }
+              if (filterDifficulty) {
+                return quiz.details.difficulty === filterDifficulty;
+              }
+              if (filterName) {
+                return quiz.details.link.includes(filterName);
+              }
+              return quiz;
+            });
+            return (
+              <>
+                <Menu />
+                <div className="all-container container">
+                  {displayQuizzes.length ? (
+                    displayQuizzes.map((quiz) => {
+                      return (
+                        <QuizCard key={quiz.details.title} {...quiz.details} />
+                      );
+                    })
+                  ) : (
+                    <NoQuizzes />
+                  )}
+                </div>
+              </>
+            );
+          }}
         </Await>
       </Suspense>
     </section>

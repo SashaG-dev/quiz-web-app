@@ -5,11 +5,11 @@
     max-width: 120rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+    grid-auto-rows: min-content;
     column-gap: 1.6rem;
     row-gap: 3.2rem;
     padding: 2.4rem;
     justify-items: center;
-    align-items: start;
     margin: auto;
 
     @include mix.respond(laptop) {
@@ -22,7 +22,6 @@
     }
 
     @include mix.respond(tab-sm) {
-      grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
       padding: 2.4rem 1.6rem;
     }
 
