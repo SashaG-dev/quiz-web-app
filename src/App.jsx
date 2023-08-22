@@ -11,6 +11,7 @@ import AllQuizzes, {
 } from './pages/AllQuizzes/AllQuizzes';
 import QuizLayout, { loader as quizLoader } from './pages/Quiz/QuizLayout';
 import StudyLayout, { loader as studyLoader } from './pages/Study/StudyLayout';
+import NotFound from './components/NotFound/NotFound';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,12 +23,13 @@ const router = createBrowserRouter(
           element={<AllQuizzes />}
           loader={quizzesLoader}
         />
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="/quiz">
+      <Route path="quiz">
         <Route index element={<h1>Placeholder</h1>} />
         <Route path=":id" element={<QuizLayout />} loader={quizLoader} />
       </Route>
-      <Route path="/study">
+      <Route path="study">
         <Route index element={<h1>Placeholder</h1>} />
         <Route path=":id" element={<StudyLayout />} loader={studyLoader} />
       </Route>

@@ -3,6 +3,7 @@ import { defer, useLoaderData, Await } from 'react-router-dom';
 import Quiz from './Quiz';
 import Loading from '../../components/Loading/Loading';
 import { quizReducer } from './quizReducer';
+import NotFound from '../../components/NotFound/NotFound';
 import { getQuiz } from '../../api/api';
 
 export const loader = async ({ params }) => {
@@ -33,7 +34,7 @@ const QuizLayout = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <Await resolve={quiz}>
+      <Await resolve={quiz} errorElement={<NotFound />}>
         {(quiz) => {
           return (
             <QuizContext.Provider value={{ ...quiz, ...state, dispatch }}>

@@ -4,6 +4,7 @@ import { getQuiz } from '../../api/api';
 import Study from './Study';
 import Loading from '../../components/Loading/Loading';
 import { studyReducer } from './studyReducer';
+import NotFound from '../../components/NotFound/NotFound';
 
 export const loader = async ({ params }) => {
   try {
@@ -24,7 +25,7 @@ const StudyLayout = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <Await resolve={quiz}>
+      <Await resolve={quiz} errorElement={<NotFound />}>
         {(quiz) => {
           return (
             <StudyContext.Provider value={{ ...state, dispatch, ...quiz }}>

@@ -1,0 +1,10 @@
+@use '../../sass/abstracts/mixins' as mix;
+
+.not-found {
+  @include mix.centerFlex;
+  flex-direction: column;
+  gap: 1.6rem;
+  min-height: 80vh;
+  text-align: center;
+  padding: 0.8rem 1.6rem;
+}
