@@ -1,45 +1,15 @@
-import { useEffect } from 'react';
 import { useQuizContext } from '../QuizLayout';
-import { CHANGE_TYPE, START_QUIZ } from '../quizReducer';
+import { CHANGE_TYPE, START } from '../quizReducer';
 import Radio from '../../../components/Radio-v2/Radio';
+import handleKey from '../../../hooks';
+import { handleStartChange, handleStart } from '../../../utils';
 import '../../../sass/components/start.scss';
 
 const StartQuiz = () => {
-  const { details, dispatch, quizType } = useQuizContext();
+  const { details, dispatch, type } = useQuizContext();
   const { title, difficulty, total } = details;
 
-  useEffect(() => {
-    const labels = document.querySelectorAll('.start__label');
-
-    const handleKeyUp = (e) => {
-      if (e.key === 'Enter' || e.keyCode === 13) {
-        const newType = e.target.htmlFor;
-        dispatch({ type: CHANGE_TYPE, payload: { typeName: newType } });
-      }
-    };
-
-    labels.forEach((label) => {
-      label.addEventListener('keyup', handleKeyUp);
-    });
-
-    return () => {
-      labels.forEach((label) =>
-        label.removeEventListener('keyup', handleKeyUp)
-      );
-    };
-  }, [quizType]);
-
-  const handleChange = (name) => {
-    dispatch({
-      type: CHANGE_TYPE,
-      payload: { typeName: name },
-    });
-  };
-
-  const handleStart = (e) => {
-    e.preventDefault();
-    dispatch({ type: START_QUIZ });
-  };
+  handleKey(CHANGE_TYPE, dispatch, type);
 
   return (
     <div className="start">
@@ -48,7 +18,7 @@ const StartQuiz = () => {
         <h2 className="start__subheading">Difficulty: {difficulty}</h2>
         <p className="start__questions">Total Questions: {total}</p>
 
-        <form className="start__options">
+        <div className="start__options">
           <h3 className="start__options-heading heading-tertiary mb-sm">
             Pick your quiz style:
           </h3>
@@ -56,26 +26,27 @@ const StartQuiz = () => {
             <Radio
               name="type"
               value="multiple"
-              state={quizType}
+              state={type}
               title="Multiple Choice"
-              func={() => handleChange('multiple')}
+              func={() => handleStartChange('multiple', dispatch, CHANGE_TYPE)}
             />
             <Radio
               name="type"
               value="text"
-              state={quizType}
+              state={type}
               title="Typed Answers"
-              func={() => handleChange('text')}
+              func={() => handleStartChange('text', dispatch, CHANGE_TYPE)}
             />
           </div>
 
           <button
             className="start__btn btn btn--blue"
-            onClick={(e) => handleStart(e)}
+            type="button"
+            onClick={(e) => handleStart(e, dispatch, START)}
           >
             Let's Start
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );

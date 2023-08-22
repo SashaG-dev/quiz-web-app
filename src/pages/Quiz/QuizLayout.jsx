@@ -24,7 +24,7 @@ const QuizLayout = () => {
     score: 0,
     index: 0,
     quizStatus: 'waiting',
-    quizType: 'multiple',
+    type: 'multiple',
     answers: [],
   };
 
