@@ -7,28 +7,31 @@ import {
 import Layout from './components/Layout';
 import Home from './pages/Home/Home';
 import AllQuizzes, {
-  loader as allQuizzesLoader,
+  loader as quizzesLoader,
 } from './pages/AllQuizzes/AllQuizzes';
-import QuizLayout, {
-  loader as quizLayoutLoader,
-} from './pages/Quiz/QuizLayout';
+import QuizLayout, { loader as quizLoader } from './pages/Quiz/QuizLayout';
+import StudyLayout, { loader as studyLoader } from './pages/Study/StudyLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<Layout />}>
+    <Route path="/">
+      <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route
           path="all-quizzes"
           element={<AllQuizzes />}
-          loader={allQuizzesLoader}
+          loader={quizzesLoader}
         />
       </Route>
       <Route path="/quiz">
         <Route index element={<h1>Placeholder</h1>} />
-        <Route path=":id" element={<QuizLayout />} loader={quizLayoutLoader} />
+        <Route path=":id" element={<QuizLayout />} loader={quizLoader} />
       </Route>
-    </>
+      <Route path="/study">
+        <Route index element={<h1>Placeholder</h1>} />
+        <Route path=":id" element={<StudyLayout />} loader={studyLoader} />
+      </Route>
+    </Route>
   )
 );
 
