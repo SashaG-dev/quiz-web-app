@@ -9,58 +9,23 @@ import RadioQuestion from './RadioQuestion/RadioQuestion';
 import Button from '../../components/Button/Button';
 import CloseModal from '../../components/Modals/CloseModal';
 import { REDO_QUIZ } from './quizReducer';
+import QuizNav from '../../components/QuizNav/QuizNav';
 import './quiz.scss';
 
 const Quiz = () => {
   const { quizStatus, quizType, index, answers, dispatch } = useQuizContext();
-  const [toggleModal, setToggleModal] = useState(false);
-  const navigate = useNavigate();
-
-  const handleModal = () => {
-    if (quizStatus === 'starting') {
-      setToggleModal(true);
-    } else navigate('/all-quizzes');
-  };
-
-  const closeModal = () => {
-    setToggleModal(false);
-  };
-
-  const goBack = () => {
-    navigate('/all-quizzes');
-  };
 
   const redoQuiz = () => {
     dispatch({ type: REDO_QUIZ });
   };
 
   return (
-    <div className="quiz container">
-      {toggleModal && (
-        <CloseModal
-          text="Are you sure you want to go?"
-          subheading="None of your progress will be saved!"
-          func={goBack}
-          closeModal={closeModal}
-          btnText="Back to quizzes"
-        />
-      )}
-      <nav className="quiz__nav">
-        <ul className="quiz__nav-links">
-          <button
-            type="button"
-            className="quiz__btn btn"
-            title="Go back to all quizzes"
-            onClick={handleModal}
-          >
-            <BsArrowLeft /> Go Back
-          </button>
-
-          {quizStatus === 'finishing' && (
-            <Button title="Restart" func={redoQuiz} />
-          )}
-        </ul>
-      </nav>
+    <div className="quiz container container--grid">
+      <QuizNav status={quizStatus}>
+        {quizStatus === 'finishing' && (
+          <Button title="Restart" func={redoQuiz} />
+        )}
+      </QuizNav>
 
       <div className="quiz__container">
         {quizStatus === 'waiting' && <StartQuiz />}

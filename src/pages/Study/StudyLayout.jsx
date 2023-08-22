@@ -21,7 +21,14 @@ export const useStudyContext = () => useContext(StudyContext);
 
 const StudyLayout = () => {
   const { quiz } = useLoaderData();
-  const [state, dispatch] = useReducer(studyReducer, { index: 0 });
+
+  const initialState = {
+    index: 0,
+    status: 'waiting',
+    type: 'flashcards',
+  };
+
+  const [state, dispatch] = useReducer(studyReducer, initialState);
 
   return (
     <Suspense fallback={<Loading />}>

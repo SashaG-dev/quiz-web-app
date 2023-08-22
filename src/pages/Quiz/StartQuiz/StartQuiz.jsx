@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useQuizContext } from '../QuizLayout';
 import { CHANGE_TYPE, START_QUIZ } from '../quizReducer';
-import './start-quiz.scss';
+import Radio from '../../../components/Radio-v2/Radio';
+import '../../../sass/components/start.scss';
 
 const StartQuiz = () => {
   const { details, dispatch, quizType } = useQuizContext();
@@ -52,32 +53,20 @@ const StartQuiz = () => {
             Pick your quiz style:
           </h3>
           <div className="start__row">
-            <label htmlFor="multiple" className="start__label" tabIndex={0}>
-              <input
-                type="radio"
-                name="type"
-                id="multiple"
-                value="multiple"
-                className="start__radio"
-                checked={quizType === 'multiple'}
-                onChange={() => handleChange('multiple')}
-              />
-              <span>&nbsp;</span>
-              Multiple Choice
-            </label>
-            <label htmlFor="text" className="start__label" tabIndex={0}>
-              <input
-                type="radio"
-                name="type"
-                id="text"
-                value="radio"
-                className="start__radio"
-                checked={quizType === 'text'}
-                onChange={() => handleChange('text')}
-              />
-              <span>&nbsp;</span>
-              Typed Answers
-            </label>
+            <Radio
+              name="type"
+              value="multiple"
+              state={quizType}
+              title="Multiple Choice"
+              func={() => handleChange('multiple')}
+            />
+            <Radio
+              name="type"
+              value="text"
+              state={quizType}
+              title="Typed Answers"
+              func={() => handleChange('text')}
+            />
           </div>
 
           <button

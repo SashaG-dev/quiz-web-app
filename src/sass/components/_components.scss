@@ -66,6 +66,16 @@
   @include mix.respond(desk-lg) {
     margin: 0 auto;
   }
+
+  &--grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+    height: 100%;
+    position: relative;
+    max-width: 120rem;
+    margin: 0 auto;
+  }
 }
 
 .overlay {

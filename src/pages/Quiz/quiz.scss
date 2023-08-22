@@ -1,27 +1,6 @@
 @use '../../sass/abstracts/mixins' as mix;
 
 .quiz {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: min-content 1fr;
-  height: 100%;
-  position: relative;
-  max-width: 120rem;
-  margin: 0 auto;
-
-  &__nav {
-    padding: 1.6rem;
-    width: 100%;
-
-    &-links {
-      display: flex;
-    }
-
-    &-links > button:first-of-type {
-      margin-right: auto;
-    }
-  }
-
   &__btn {
     @include mix.centerFlex;
     gap: 0.4rem;

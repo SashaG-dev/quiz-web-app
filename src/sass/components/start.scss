@@ -1,5 +1,5 @@
-@use '../../../sass/abstracts/variables' as var;
-@use '../../../sass/abstracts/mixins' as mix;
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
 
 .start {
   @include mix.centerFlex;
@@ -87,14 +87,6 @@
         width: 1.8rem;
         border-radius: 50%;
       }
-    }
-  }
-
-  &__radio {
-    display: none;
-
-    &:checked + span::after {
-      background-color: var(--black);
     }
   }
 
