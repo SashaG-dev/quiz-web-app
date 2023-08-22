@@ -1,0 +1,21 @@
+@use '../../sass/abstracts/mixins' as mix;
+
+.quiz-nav {
+  padding: 1.6rem;
+  width: 100%;
+
+  &__btn {
+    @include mix.centerFlex;
+    gap: 0.4rem;
+    font-size: 1.6rem;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+  }
+
+  &__links > button:first-of-type {
+    margin-right: auto;
+  }
+}
