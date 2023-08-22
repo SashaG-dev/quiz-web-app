@@ -2,7 +2,11 @@ import './radio.scss';
 
 const Radio = ({ name, value, func, state, title }) => {
   return (
-    <label htmlFor={value} className="radio__label--2" tabIndex={0}>
+    <label
+      htmlFor={value}
+      className={`radio__label--2 ${state === value ? 'selected' : ''}`}
+      tabIndex={0}
+    >
       <input
         type="radio"
         className="radio__radio--2"

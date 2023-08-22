@@ -26,15 +26,8 @@ const Quiz = () => {
       <div className="quiz__container">
         {quizStatus === 'waiting' && <StartQuiz />}
 
-        {quizStatus === 'starting' ? (
-          type === 'text' ? (
-            <TypedQuestion />
-          ) : (
-            <RadioQuestion />
-          )
-        ) : (
-          ''
-        )}
+        {quizStatus === 'starting' &&
+          (type === 'text' ? <TypedQuestion /> : <RadioQuestion />)}
 
         {quizStatus === 'finishing' && <FinishQuiz />}
       </div>

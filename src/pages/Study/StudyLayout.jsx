@@ -26,6 +26,7 @@ const StudyLayout = () => {
     index: 0,
     status: 'waiting',
     type: 'flashcards',
+    color: '',
   };
 
   const [state, dispatch] = useReducer(studyReducer, initialState);

@@ -7,7 +7,7 @@ const NotFound = () => {
       <h1 className="heading-primary not-found__heading">
         Oops! Nothing's here...
       </h1>
-      <h2 className="heading-secondary not-found__subheading">
+      <h2 className="heading-secondary not-found__subheading mb-sm">
         404 - Page Not Found
       </h2>
       <Link
