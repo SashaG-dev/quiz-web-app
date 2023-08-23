@@ -13,6 +13,8 @@
     @include mix.centerFlex;
     gap: 0.4rem;
     font-size: 1.6rem;
+    position: relative;
+    z-index: 12;
   }
 
   &__links {
