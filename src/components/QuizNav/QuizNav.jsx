@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
 import CloseModal from '../Modals/CloseModal';
 import './quiz-nav.scss';
 
-const QuizNav = ({ status, children }) => {
+const QuizNav = memo(function QuizNav(props) {
+  const { status, children } = props;
   const [toggleModal, setToggleModal] = useState(false);
   const navigate = useNavigate();
 
@@ -48,5 +49,6 @@ const QuizNav = ({ status, children }) => {
       </nav>
     </>
   );
-};
+});
+
 export default QuizNav;

@@ -12,7 +12,6 @@ const CardLayout = () => {
     questions,
     index,
     dispatch,
-    flashcards: { cardColor },
   } = useStudyContext();
 
   const [cardEffects, setCardEffects] = useState({

@@ -2,6 +2,7 @@ export const CHANGE_TYPE = 'CHANGE_TYPE';
 export const START = 'START';
 export const TOGGLE_CARD = 'TOGGLE_CARD';
 export const TOGGLE_COLOR = 'TOGGLE_COLOR';
+export const SWITCH_STUDY = 'SWITCH_STUDY';
 
 export const studyReducer = (state, action) => {
   if (action.type === CHANGE_TYPE) {
@@ -24,6 +25,10 @@ export const studyReducer = (state, action) => {
       ...state,
       flashcards: { ...state.flashcards, cardColor: newColor },
     };
+  }
+  if (action.type === SWITCH_STUDY) {
+    const newType = action.payload.studyType;
+    return { ...state, type: newType };
   }
   return state;
 };

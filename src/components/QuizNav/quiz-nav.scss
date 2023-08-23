@@ -5,6 +5,10 @@
   width: 100%;
   position: relative;
 
+  @include mix.respond(phone-sm) {
+    margin-bottom: 3.8rem;
+  }
+
   &__btn {
     @include mix.centerFlex;
     gap: 0.4rem;

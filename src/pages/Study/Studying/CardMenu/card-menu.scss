@@ -2,6 +2,26 @@
 @use '../../../../sass/abstracts/mixins' as mix;
 @use '../../../../sass/abstracts/animations';
 
+.menu-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+
+  @include mix.respond(phone-port) {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.8rem;
+    z-index: 10;
+    align-items: flex-start;
+  }
+  @include mix.respond(phone-sm) {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.6rem;
+  }
+}
+
 .card-menu {
   overflow: hidden;
   padding: 0.8rem;
@@ -10,11 +30,11 @@
   transition: var.$transitions;
 
   @include mix.respond(phone-port) {
-    position: absolute;
-    top: 0.8rem;
-    right: 1.8rem;
-    z-index: 10;
     overflow: visible;
+    transform: translateY(-0.8rem);
+  }
+  @include mix.respond(phone-sm) {
+    order: 1;
   }
 
   &.isOpen {
@@ -31,6 +51,9 @@
     @include mix.respond(phone-port) {
       flex-direction: column;
     }
+    @include mix.respond(phone-sm) {
+      flex-direction: row;
+    }
   }
 
   &__settings-container {
@@ -43,6 +66,10 @@
       order: 1;
       display: none;
       animation: showNav 0.2s;
+    }
+    @include mix.respond(phone-sm) {
+      order: 0;
+      display: block;
     }
 
     &.show {
@@ -84,7 +111,7 @@
     &:hover,
     &:focus-visible,
     &.selected {
-      transform: scale(1.2);
+      transform: scale(1.25);
       outline: none;
     }
   }

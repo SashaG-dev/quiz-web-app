@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaGear } from 'react-icons/fa6';
 import { useStudyContext } from '../../StudyLayout';
-import { TOGGLE_COLOR } from '../../studyReducer';
+import { TOGGLE_COLOR, SWITCH_STUDY } from '../../studyReducer';
 import './card-menu.scss';
 
 const CardMenu = () => {
@@ -36,34 +36,47 @@ const CardMenu = () => {
   const colors = ['white', 'black', 'red', 'blue', 'green'];
 
   return (
-    <div className={`card-menu ${setOpenClass('isOpen')}`}>
-      <div className={`card-menu__settings-container ${setOpenClass('show')}`}>
-        <div className="settings-colors">
-          {colors.map((color) => {
-            return (
-              <div
-                tabIndex={0}
-                key={color}
-                className={`card-menu__color 
+    <div className="menu-container">
+      <div className={`card-menu ${setOpenClass('isOpen')}`}>
+        <div
+          className={`card-menu__settings-container ${setOpenClass('show')}`}
+        >
+          <div className="settings-colors">
+            {colors.map((color) => {
+              return (
+                <div
+                  tabIndex={0}
+                  key={color}
+                  className={`card-menu__color 
                 card-menu__color--${color} ${toggleColor(color)}`}
-                title={`Change cards color to ${color}`}
-                onClick={(e) => dispatchColor(e, color)}
-                onKeyDown={(e) => dispatchColor(e, color)}
-              >
-                &nbsp;
-              </div>
-            );
-          })}
+                  title={`Change cards color to ${color}`}
+                  onClick={(e) => dispatchColor(e, color)}
+                  onKeyDown={(e) => dispatchColor(e, color)}
+                >
+                  &nbsp;
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
+        <button
+          type="button"
+          className={`card-menu__btn ${setOpenClass('isOpen')}`}
+          title="Open flashcard settings"
+          onClick={() => setToggleMenu((menu) => !menu)}
+        >
+          <FaGear />
+        </button>
+      </div>
       <button
-        type="button"
-        className={`card-menu__btn ${setOpenClass('isOpen')}`}
-        title="Open flashcard settings"
-        onClick={() => setToggleMenu((menu) => !menu)}
+        onClick={() =>
+          dispatch({ type: SWITCH_STUDY, payload: { studyType: 'notes' } })
+        }
+        title="Switch to notes"
+        className="btn btn--blue card-menu__btn--switch"
       >
-        <FaGear />
+        Use Notes
       </button>
     </div>
   );

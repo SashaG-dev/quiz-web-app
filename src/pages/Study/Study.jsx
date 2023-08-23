@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import { useStudyContext } from './StudyLayout';
 import StartStudy from './StartStudy/StartStudy';
 import QuizNav from '../../components/QuizNav/QuizNav';
 import CardLayout from './Studying/CardLayout';
 import NoteLayout from './Studying/NoteLayout';
 import CardMenu from './Studying/CardMenu/CardMenu';
+import { SWITCH_STUDY } from './studyReducer';
 import './study.scss';
 
 const Study = () => {
@@ -12,17 +12,20 @@ const Study = () => {
     status,
     type,
     details: { link, title },
+    dispatch,
   } = useStudyContext();
 
   const NotesLink = () => {
     return (
-      <Link
-        to={`/quiz/${link}`}
-        title={`Take ${title} quiz`}
-        className="btn btn--blue note-layout__btn"
+      <button
+        className="btn btn--blue"
+        onClick={() =>
+          dispatch({ type: SWITCH_STUDY, payload: { studyType: 'flashcards' } })
+        }
+        title="Switch to flashcards"
       >
-        Take Quiz
-      </Link>
+        Use Flashcards
+      </button>
     );
   };
 
