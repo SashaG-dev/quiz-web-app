@@ -3,6 +3,7 @@
 .quiz-nav {
   padding: 1.6rem;
   width: 100%;
+  position: relative;
 
   &__btn {
     @include mix.centerFlex;

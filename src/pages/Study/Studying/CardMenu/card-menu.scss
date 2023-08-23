@@ -1,0 +1,110 @@
+@use '../../../../sass/abstracts/variables' as var;
+@use '../../../../sass/abstracts/mixins' as mix;
+@use '../../../../sass/abstracts/animations';
+
+.card-menu {
+  overflow: hidden;
+  padding: 0.8rem;
+  border: 2px solid transparent;
+  border-radius: var.$radius-sm;
+  transition: var.$transitions;
+
+  @include mix.respond(phone-port) {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.8rem;
+    z-index: 10;
+    overflow: visible;
+  }
+
+  &.isOpen {
+    background-color: var(--background);
+    border: 2px solid var(--dark-gray);
+  }
+
+  &,
+  .settings-colors {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+
+    @include mix.respond(phone-port) {
+      flex-direction: column;
+    }
+  }
+
+  &__settings-container {
+    transform: translateX(5%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+
+    @include mix.respond(phone-port) {
+      order: 1;
+      display: none;
+      animation: showNav 0.2s;
+    }
+
+    &.show {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+
+      @include mix.respond(phone-port) {
+        display: block;
+      }
+    }
+  }
+
+  &__color {
+    height: 2.4rem;
+    width: 2.4rem;
+    background-color: var(--white);
+    border: 2px solid var(--dark-gray);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var.$transitions;
+
+    &--black {
+      background-color: var(--black);
+    }
+
+    &--red {
+      background-color: var(--error);
+    }
+
+    &--blue {
+      background-color: var(--blue);
+    }
+
+    &--green {
+      background-color: var(--beginner);
+    }
+
+    &:hover,
+    &:focus-visible,
+    &.selected {
+      transform: scale(1.2);
+      outline: none;
+    }
+  }
+
+  &__btn {
+    @include mix.centerFlex;
+    color: var(--dark-gray);
+    font-size: 2.8rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: var.$transitions;
+
+    &:hover,
+    &:focus-visible,
+    &.isOpen {
+      color: var(--black);
+      transform: rotate(45deg);
+      border-radius: 50%;
+      outline-offset: 2px;
+    }
+  }
+}

@@ -31,7 +31,6 @@
   }
 
   &__side {
-    background-color: var(--white);
     padding: 0.8rem 1.6rem;
     position: absolute;
     top: 0;
@@ -54,18 +53,25 @@
       height: 30rem;
     }
 
-    &.transition {
-      transition: all 0.6s;
+    &--white {
+      background-color: var(--white);
     }
-
+    &--black {
+      color: var(--white);
+      background-color: var(--black);
+    }
+    &--red {
+      background-color: var(--error);
+    }
     &--blue {
       background-color: var(--blue);
     }
     &--green {
       background-color: var(--beginner);
     }
-    &--orange {
-      background-color: var(--intermediate);
+
+    &.transition {
+      transition: all 0.6s;
     }
 
     &-back {
