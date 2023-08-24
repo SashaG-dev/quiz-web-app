@@ -19,22 +19,10 @@
   &__btn {
     font-size: 1.6rem;
     padding: 0.8rem;
-    background-color: var(--white);
-    border: var.$border-black;
-    border-radius: var.$radius-sm;
-    cursor: pointer;
 
-    &.btn:hover,
-    &.btn:focus-visible,
     &.active {
       color: var(--white);
       background-color: var(--black);
-    }
-
-    &.btn--underline:hover,
-    &.btn--underline:focus-visible {
-      color: var(--black);
-      background-color: transparent;
     }
   }
 }

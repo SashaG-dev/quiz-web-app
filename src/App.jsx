@@ -9,6 +9,9 @@ import Home from './pages/Home/Home';
 import AllQuizzes, {
   loader as quizzesLoader,
 } from './pages/AllQuizzes/AllQuizzes';
+import Challenges, {
+  loader as challengesLoader,
+} from './pages/Challenges/Challenges';
 import QuizLayout, { loader as quizLoader } from './pages/Quiz/QuizLayout';
 import StudyLayout, { loader as studyLoader } from './pages/Study/StudyLayout';
 import NotFound from './components/NotFound/NotFound';
@@ -22,6 +25,13 @@ const router = createBrowserRouter(
           path="all-quizzes"
           element={<AllQuizzes />}
           loader={quizzesLoader}
+          errorElement={<NotFound />}
+        />
+        <Route
+          path="challenges"
+          element={<Challenges />}
+          loader={challengesLoader}
+          errorElement={<NotFound />}
         />
         <Route path="*" element={<NotFound />} />
       </Route>

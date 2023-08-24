@@ -1,0 +1,78 @@
+@use '../../../sass/abstracts/variables' as var;
+@use '../../../sass/abstracts/mixins' as mix;
+
+.challenge-card {
+  width: 85%;
+  min-height: 24rem;
+  background-color: var(--white);
+  border-radius: var.$radius-md;
+  box-shadow: var.$shadow-black;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include mix.respond(tab-land) {
+    width: 100%;
+    min-height: 28rem;
+    gap: 0.8rem;
+  }
+  @include mix.respond(phone-land) {
+    padding: 2.4rem 3.2rem;
+    min-height: 22rem;
+  }
+  @include mix.respond(phone-port) {
+    width: 90%;
+    gap: 1.6rem;
+    padding: 1.6rem;
+  }
+
+  &__subheading {
+    color: var(--dark-gray);
+    font-family: 'Barlow';
+    font-weight: 500;
+
+    @include mix.respond(tab-sm) {
+      font-size: 2rem;
+    }
+    @include mix.respond(phone-port) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__difficulty {
+    align-self: flex-start;
+    border-radius: var.$radius-sm;
+    padding: 0.8rem;
+    cursor: default;
+
+    @include mix.respond(phone-port) {
+      font-size: 1.4rem;
+    }
+
+    &--begin {
+      background-color: var(--beginner);
+    }
+    &--inter {
+      background-color: var(--intermediate);
+      border: 1px solid var(--light-gray);
+    }
+    &--chal {
+      background-color: var(--challenging);
+    }
+  }
+
+  &__btn {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+
+    @include mix.respond(phone-land) {
+      width: 100%;
+    }
+    @include mix.respond(phone-port) {
+      font-size: 1.4rem;
+    }
+  }
+}

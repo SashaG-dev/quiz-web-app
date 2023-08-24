@@ -36,13 +36,14 @@
   &--white {
     color: var(--black);
     background-color: var(--white);
-    border: var.$border-black;
+    border: 1px solid var(--light-gray);
 
     &:hover,
     &:active,
     &:focus-visible {
       color: var(--white);
       background-color: var(--black);
+      border: var.$border-black;
     }
   }
 

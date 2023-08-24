@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
+import { displayDifficulty } from '../../../utils';
 import './quiz-card.scss';
 
-const QuizCard = ({ title, total, difficulty, topics, link, type }) => {
-  const displayDifficulty = () => {
-    if (difficulty === 'beginner') return 'quiz-card__dot--begin';
-    if (difficulty === 'intermediate') return 'quiz-card__dot--inter';
-    if (difficulty === 'challenging') return 'quiz-card__dot--chal';
-  };
-
+const QuizCard = ({ title, total, difficulty, topics, link }) => {
   return (
     <div className="quiz-card">
       <div
-        className={`quiz-card__dot ${displayDifficulty()}`}
+        className={`quiz-card__dot ${displayDifficulty(
+          difficulty,
+          'quiz-card__dot'
+        )}`}
         title={`Difficulty: ${difficulty}`}
       >
         <span>{difficulty}</span>

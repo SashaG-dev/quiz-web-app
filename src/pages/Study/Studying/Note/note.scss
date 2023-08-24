@@ -7,7 +7,7 @@
   grid-template-columns: 2fr 1fr;
   gap: 2.4rem;
   background-color: var(--white);
-  box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: var.$shadow-black;
   border-radius: var.$radius-sm;
   width: 90%;
   max-width: 120rem;

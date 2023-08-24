@@ -2,6 +2,7 @@ import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
 const quizzesCollectionRef = collection(db, 'quizzes');
+const challengesCollectionRef = collection(db, 'challenges');
 
 export const getAllQuizzes = async () => {
   try {
@@ -11,7 +12,7 @@ export const getAllQuizzes = async () => {
     });
     return allQuizzes;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
@@ -22,5 +23,18 @@ export const getQuiz = async (id) => {
     return quizSnapshot.data();
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const getAllChallenges = async () => {
+  try {
+    const challengesSnapshot = await getDocs(challengesCollectionRef);
+    const allChallenges = challengesSnapshot.docs.map((doc) => {
+      return doc.data();
+    });
+    return allChallenges;
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 };
