@@ -3,7 +3,6 @@ import { defer, useLoaderData, Await } from 'react-router-dom';
 import Quiz from './Quiz';
 import Loading from '../../components/Loading/Loading';
 import { quizReducer } from './quizReducer';
-import NotFound from '../../components/NotFound/NotFound';
 import { getQuiz } from '../../api/api';
 
 export const loader = async ({ params }) => {
@@ -12,7 +11,11 @@ export const loader = async ({ params }) => {
     return defer({ quiz: getQuiz(id) });
   } catch (err) {
     console.error(err);
-    throw err;
+    throw {
+      heading: "Whoops! That's awkward...",
+      message:
+        'There was a problem while fetching the quiz. Check your connection and try again!',
+    };
   }
 };
 
@@ -34,7 +37,7 @@ const QuizLayout = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <Await resolve={quiz} errorElement={<NotFound />}>
+      <Await resolve={quiz}>
         {(quiz) => {
           return (
             <QuizContext.Provider value={{ ...quiz, ...state, dispatch }}>

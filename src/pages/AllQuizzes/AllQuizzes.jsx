@@ -13,8 +13,8 @@ export const loader = async () => {
   } catch (err) {
     console.error(err);
     throw {
-      message:
-        "Uh-oh! Couldn't load quizzes. Check your connection and try again.",
+      heading: "Whoops! That's awkward...",
+      message: "Couldn't load quizzes. Check your connection and try again!",
     };
   }
 };

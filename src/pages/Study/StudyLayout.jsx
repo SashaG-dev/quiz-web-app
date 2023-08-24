@@ -4,7 +4,6 @@ import { getQuiz } from '../../api/api';
 import Study from './Study';
 import Loading from '../../components/Loading/Loading';
 import { studyReducer } from './studyReducer';
-import NotFound from '../../components/NotFound/NotFound';
 
 export const loader = async ({ params }) => {
   try {
@@ -12,7 +11,11 @@ export const loader = async ({ params }) => {
     return defer({ quiz: getQuiz(id) });
   } catch (err) {
     console.error(err);
-    throw err;
+    throw {
+      heading: "Whoops! That's awkward...",
+      message:
+        'There was a problem while fetching study notes. Check your connection and try again!',
+    };
   }
 };
 
@@ -35,7 +38,7 @@ const StudyLayout = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <Await resolve={quiz} errorElement={<NotFound />}>
+      <Await resolve={quiz}>
         {(quiz) => {
           return (
             <StudyContext.Provider value={{ ...state, dispatch, ...quiz }}>
