@@ -6,8 +6,8 @@
   top: 3.2rem;
   background-color: var(--white);
   padding: 1.6rem;
+  border: var.$border-gray;
   border-radius: var.$radius-sm;
-  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.1);
   z-index: 5;
 
   @include mix.respond(phone-land) {

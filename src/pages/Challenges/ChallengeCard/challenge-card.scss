@@ -5,8 +5,8 @@
   width: 85%;
   min-height: 24rem;
   background-color: var(--white);
+  border: var.$border-gray;
   border-radius: var.$radius-md;
-  box-shadow: var.$shadow-black;
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
@@ -42,6 +42,7 @@
 
   &__difficulty {
     align-self: flex-start;
+    border: var.$border-gray;
     border-radius: var.$radius-sm;
     padding: 0.8rem;
     cursor: default;
@@ -55,7 +56,6 @@
     }
     &--inter {
       background-color: var(--intermediate);
-      border: 1px solid var(--light-gray);
     }
     &--chal {
       background-color: var(--challenging);

@@ -14,12 +14,12 @@
     flex-direction: column;
     font-size: 2.4rem;
     text-align: center;
-    background-color: var(--blue);
+    background-color: var(--white);
     height: 16rem;
     width: 16rem;
     margin: 0 auto;
     border-radius: 50%;
-    border: 2px solid var(--dark-gray);
+    border: 2px solid var(--light-gray);
 
     @include mix.respond(phone-land) {
       font-size: 1.8rem;

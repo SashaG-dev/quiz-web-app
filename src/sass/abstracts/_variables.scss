@@ -7,18 +7,15 @@
   --black: #000;
   --dark-gray: #555;
   --light-gray: #bbb;
-  --light-gray2: #eee;
   --white: #fff;
   --background: #fffff9;
 }
 
 // BORDERS AND RADII
 $border-black: 1px solid #000;
+$border-gray: 1px solid #bbb;
 $radius-sm: 0.8rem;
 $radius-md: 1.6rem;
-
-//SHADOWS
-$shadow-black: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
 
 // TRANSITIONS
 $transitions: all 0.3s;

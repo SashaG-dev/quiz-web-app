@@ -4,7 +4,7 @@
 .quiz-card {
   width: 36rem;
   padding: 3.4rem 1.6rem;
-  box-shadow: var.$shadow-black;
+  border: var.$border-gray;
   border-radius: var.$radius-sm;
   position: relative;
   background-color: var(--white);
@@ -27,6 +27,7 @@
     right: 1.6rem;
     height: 2rem;
     width: 2rem;
+    border: var.$border-gray;
     border-radius: 50%;
     cursor: default;
     transition: all 0.2s;
@@ -49,12 +50,9 @@
     &--begin {
       background-color: var(--beginner);
     }
-
     &--inter {
       background-color: var(--intermediate);
-      border: 1px solid var(--light-gray);
     }
-
     &--chal {
       background-color: var(--challenging);
     }

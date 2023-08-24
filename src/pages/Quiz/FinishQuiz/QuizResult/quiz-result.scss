@@ -3,7 +3,7 @@
 
 .quiz-result {
   background-color: var(--white);
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  border: var.$border-gray;
   border-radius: var.$radius-md;
   width: 40rem;
   padding: 1.6rem;
