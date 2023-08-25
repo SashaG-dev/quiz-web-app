@@ -2,13 +2,16 @@
 @use '../abstracts/mixins' as mix;
 
 .btn {
-  transition: var.$transitions;
-  cursor: pointer;
-  background-color: var(--black);
   color: var(--white);
+  font-family: 'Barlow';
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: var(--black);
   padding: 0.8rem 1.6rem;
   border-radius: var.$radius-sm;
   border: none;
+  transition: var.$transitions;
+  cursor: pointer;
 
   &:link,
   &:visited {

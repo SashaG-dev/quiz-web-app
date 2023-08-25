@@ -13,6 +13,7 @@ export const getAllQuizzes = async () => {
     return allQuizzes;
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -23,6 +24,7 @@ export const getQuiz = async (id) => {
     return quizSnapshot.data();
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -33,6 +35,17 @@ export const getAllChallenges = async () => {
       return doc.data();
     });
     return allChallenges;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+export const getChallenge = async (id) => {
+  try {
+    const docRef = doc(db, 'challenges', id);
+    const challengeSnapshot = await getDoc(docRef);
+    return challengeSnapshot.data();
   } catch (err) {
     console.error(err);
     throw err;

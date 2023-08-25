@@ -4,54 +4,46 @@ import './menu.scss';
 const Menu = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const filters = [
+    'All Quizzes',
+    'JavaScript',
+    'React',
+    'Beginner',
+    'Intermediate',
+    'Challenging',
+  ];
+
   const filterType = searchParams.get('type');
   const filterDifficulty = searchParams.get('difficulty');
 
   const setActive = (name) => {
-    return filterType === name || filterDifficulty === name ? 'active' : null;
+    return filterType === name || filterDifficulty === name ? 'active' : '';
+  };
+
+  const setParamObj = (filter, arr) => {
+    if (filter.includes('All')) return;
+    if (arr.indexOf(filter) <= 2) {
+      return { type: filter.toLowerCase() };
+    }
+    return { difficulty: filter.toLowerCase() };
   };
 
   return (
     <div className="menu">
       <div className="menu__categories">
-        <button
-          className="menu__btn btn btn--white"
-          title="Show all quizzes"
-          onClick={() => setSearchParams()}
-        >
-          All Quizzes
-        </button>
-
-        <button
-          className={`menu__btn btn btn--white ${setActive('javascript')}`}
-          onClick={() => setSearchParams({ type: 'javascript' })}
-        >
-          JavaScript
-        </button>
-        <button
-          className={`menu__btn btn btn--white ${setActive('react')}`}
-          onClick={() => setSearchParams({ type: 'react' })}
-        >
-          React
-        </button>
-        <button
-          className={`menu__btn btn btn--white ${setActive('beginner')}`}
-          onClick={() => setSearchParams({ difficulty: 'beginner' })}
-        >
-          Beginner
-        </button>
-        <button
-          className={`menu__btn btn btn--white ${setActive('intermediate')}`}
-          onClick={() => setSearchParams({ difficulty: 'intermediate' })}
-        >
-          Intermediate
-        </button>
-        <button
-          className={`menu__btn btn btn--white ${setActive('challenging')}`}
-          onClick={() => setSearchParams({ difficulty: 'challenging' })}
-        >
-          Challenging
-        </button>
+        {filters.map((filter, _, arr) => {
+          return (
+            <button
+              key={filter}
+              className={`menu__btn btn btn--white ${setActive(
+                filter.toLowerCase()
+              )}`}
+              onClick={() => setSearchParams(setParamObj(filter, arr))}
+            >
+              {filter}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

@@ -18,16 +18,15 @@ const ResourceList = () => {
         {allSources.map((source) => {
           const { name, link, paid } = source;
           return (
-            <Link
-              to={link}
-              key={name}
-              title={`Find out more about ${name} (opens new tab)`}
-              target="_blank"
-            >
-              <li>
+            <li key={name}>
+              <Link
+                to={link}
+                title={`Find out more about ${name} (opens new tab)`}
+                target="_blank"
+              >
                 {name} {paid && <BsAsterisk />}
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>

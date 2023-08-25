@@ -9,11 +9,14 @@ import Home from './pages/Home/Home';
 import AllQuizzes, {
   loader as quizzesLoader,
 } from './pages/AllQuizzes/AllQuizzes';
+import QuizLayout, { loader as quizLoader } from './pages/Quiz/QuizLayout';
+import StudyLayout, { loader as studyLoader } from './pages/Study/StudyLayout';
 import Challenges, {
   loader as challengesLoader,
 } from './pages/Challenges/Challenges';
-import QuizLayout, { loader as quizLoader } from './pages/Quiz/QuizLayout';
-import StudyLayout, { loader as studyLoader } from './pages/Study/StudyLayout';
+import Challenge, {
+  loader as challengeLoader,
+} from './pages/Challenge/Challenge';
 import NotFound from './components/NotFound/NotFound';
 
 const router = createBrowserRouter(
@@ -31,6 +34,12 @@ const router = createBrowserRouter(
           path="challenges"
           element={<Challenges />}
           loader={challengesLoader}
+          errorElement={<NotFound />}
+        />
+        <Route
+          path="challenges/:id"
+          element={<Challenge />}
+          loader={challengeLoader}
           errorElement={<NotFound />}
         />
         <Route path="*" element={<NotFound />} />

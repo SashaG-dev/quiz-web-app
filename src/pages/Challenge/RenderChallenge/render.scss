@@ -1,0 +1,71 @@
+@use '../../../sass/abstracts/mixins' as mix;
+
+.render {
+  & > * {
+    margin: 3.2rem auto;
+
+    &:not(.resources) {
+      padding: 0 3.2rem;
+    }
+  }
+
+  p,
+  li {
+    font-size: 2rem;
+    line-height: 1.4;
+    max-width: 120rem;
+
+    @include mix.respond(phone-land) {
+      font-size: 1.8rem;
+    }
+    @include mix.respond(phone-port) {
+      line-height: 1.1;
+    }
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      display: flex;
+      gap: 0.8rem;
+    }
+  }
+
+  li {
+    & > a {
+      display: inline-block;
+      text-indent: -0.2rem;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  a {
+    &:link,
+    &:visited {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      outline: none;
+      text-decoration: underline;
+    }
+  }
+
+  .bonus {
+    &__heading {
+      margin-bottom: 0.4rem;
+    }
+
+    &__subheading {
+      font-family: 'Barlow';
+      line-height: 1;
+    }
+  }
+}

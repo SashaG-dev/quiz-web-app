@@ -1,0 +1,11 @@
+.challenge {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  &__link {
+    font-family: 'Barlow';
+    font-size: 1.8rem;
+    display: inline-block;
+    margin: 1.6rem 2rem;
+  }
+}

@@ -20,7 +20,7 @@ const ChallengeCard = ({ heading, description, link, difficulty }) => {
       </div>
 
       <Link
-        to={`/challenge/${link}`}
+        to={`${link}`}
         className="challenge-card__btn btn btn--blue"
         title={`Learn more about the ${heading} challenge`}
       >
