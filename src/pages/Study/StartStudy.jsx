@@ -1,9 +1,9 @@
-import { useStudyContext } from '../StudyLayout';
-import Radio from '../../../components/Radio-v2/Radio';
-import { CHANGE_TYPE, START } from '../studyReducer';
-import handleKey from '../../../hooks';
-import { handleStartChange, handleStart } from '../../../utils';
-import '../../../sass/components/start.scss';
+import { useStudyContext } from './StudyLayout';
+import Radio from '../../components/Radio-v2/Radio';
+import { CHANGE_TYPE, START } from './studyReducer';
+import handleKey from '../../hooks';
+import { handleStartChange, handleStart } from '../../utils';
+import '../../sass/components/start.scss';
 
 const StartStudy = () => {
   const { details, type, dispatch } = useStudyContext();

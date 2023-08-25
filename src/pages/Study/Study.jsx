@@ -1,9 +1,9 @@
 import { useStudyContext } from './StudyLayout';
-import StartStudy from './StartStudy/StartStudy';
+import StartStudy from './StartStudy';
 import QuizNav from '../../components/QuizNav/QuizNav';
-import CardLayout from './Studying/CardLayout';
-import NoteLayout from './Studying/NoteLayout';
-import CardMenu from './Studying/CardMenu/CardMenu';
+import CardLayout from './CardStudy/CardLayout';
+import NoteLayout from './NoteStudy/NoteLayout';
+import CardMenu from './CardStudy/CardMenu/CardMenu';
 import { SWITCH_STUDY } from './studyReducer';
 import './study.scss';
 
