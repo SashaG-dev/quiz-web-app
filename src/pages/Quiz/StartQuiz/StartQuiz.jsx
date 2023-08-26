@@ -19,10 +19,13 @@ const StartQuiz = () => {
         <p className="start__questions">Total Questions: {total}</p>
 
         <div className="start__options">
-          <h3 className="start__options-heading heading-tertiary mb-sm">
+          <h2
+            className="start__options-heading heading-tertiary mb-sm"
+            id="quiz-label"
+          >
             Pick your quiz style:
-          </h3>
-          <div className="start__row">
+          </h2>
+          <form className="start__row">
             <Radio
               name="type"
               value="multiple"
@@ -37,12 +40,14 @@ const StartQuiz = () => {
               title="Typed Answers"
               func={() => handleStartChange('text', dispatch, CHANGE_TYPE)}
             />
-          </div>
+          </form>
 
           <button
             className="start__btn btn btn--blue"
             type="button"
             onClick={(e) => handleStart(e, dispatch, START)}
+            title="start quiz"
+            aria-label="start quiz"
           >
             Let's Start
           </button>

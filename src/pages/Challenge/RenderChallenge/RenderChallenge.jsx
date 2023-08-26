@@ -13,14 +13,14 @@ const RenderChallenge = (props) => {
         The Challenge: {heading}
       </h1>
 
-      <section className="scenario">
+      <section className="scenario" aria-label="challenge scenario">
         <h2 className="heading-tertiary scenario__heading mb-sm">
           Alright, here's the situation...
         </h2>
         <p className="scenario__text">{scenario}</p>
       </section>
 
-      <section className="tech">
+      <section className="tech" aria-label="required tech and features">
         <h2 className="heading-tertiary tech__heading mb-sm">
           Required Tech and Features:
         </h2>
@@ -33,7 +33,10 @@ const RenderChallenge = (props) => {
         </ol>
       </section>
 
-      <section className="resources">
+      <section
+        className="resources"
+        aria-label="challenge resources and inspiration"
+      >
         <h2 className="heading-tertiary resources__heading mb-md">
           Need some inspiration? Here's some additional resources.
         </h2>
@@ -55,7 +58,7 @@ const RenderChallenge = (props) => {
         </ul>
       </section>
 
-      <section className="bonus">
+      <section className="bonus" aria-label="bonus features and challenges">
         <h2 className="heading__tertiary bonus__heading">All finished?</h2>
         <h3 className="bonus__subheading mb-md">
           Here's a few more ideas to take your project to the next level!

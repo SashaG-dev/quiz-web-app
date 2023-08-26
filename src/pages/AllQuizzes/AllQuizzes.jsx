@@ -28,7 +28,7 @@ const AllQuizzes = () => {
   const filterName = searchParams.get('title');
 
   return (
-    <section className="all">
+    <main className="all">
       <Suspense fallback={<Loading />}>
         <Await resolve={allQuizzes}>
           {(allQuizzes) => {
@@ -47,7 +47,10 @@ const AllQuizzes = () => {
             return (
               <>
                 <Menu />
-                <div className="all-container container">
+                <section
+                  className="all-container container"
+                  aria-label="all quizzes"
+                >
                   {displayQuizzes.length ? (
                     displayQuizzes.map((quiz) => {
                       return (
@@ -57,13 +60,13 @@ const AllQuizzes = () => {
                   ) : (
                     <NoQuizzes />
                   )}
-                </div>
+                </section>
               </>
             );
           }}
         </Await>
       </Suspense>
-    </section>
+    </main>
   );
 };
 export default AllQuizzes;

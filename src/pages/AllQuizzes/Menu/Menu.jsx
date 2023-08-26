@@ -39,6 +39,9 @@ const Menu = () => {
                 filter.toLowerCase()
               )}`}
               onClick={() => setSearchParams(setParamObj(filter, arr))}
+              title={`Display ${
+                filter.includes('All') ? filter : filter + ' quizzes'
+              }`}
             >
               {filter}
             </button>

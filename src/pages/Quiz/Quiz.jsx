@@ -22,32 +22,38 @@ const Quiz = () => {
   };
 
   return (
-    <div className="quiz container container--grid">
-      <QuizNav status={quizStatus}>
-        {quizStatus === 'waiting' && (
-          <Link
-            to={`/study/${link}`}
-            title={`Go study ${title}`}
-            className="btn btn--blue"
-            style={{ textAlign: 'center' }}
-          >
-            Go Study
-          </Link>
-        )}
-        {quizStatus === 'finishing' && (
-          <Button title="Restart" func={redoQuiz} />
-        )}
-      </QuizNav>
+    <main className="quiz container container--grid">
+      <header role="banner">
+        <QuizNav status={quizStatus}>
+          {quizStatus === 'waiting' && (
+            <Link
+              to={`/study/${link}`}
+              title={`Go study ${title}`}
+              aria-label={`Start a study session that covers ${title}`}
+              className="btn btn--blue"
+              style={{ textAlign: 'center' }}
+            >
+              Go Study
+            </Link>
+          )}
+          {quizStatus === 'finishing' && (
+            <Button title="Restart" func={redoQuiz} />
+          )}
+        </QuizNav>
+      </header>
 
-      <div className="quiz__container">
+      <section
+        className="quiz__container"
+        aria-label={`${title.toLowerCase()} quiz`}
+      >
         {quizStatus === 'waiting' && <StartQuiz />}
 
         {quizStatus === 'starting' &&
           (type === 'text' ? <TypedQuestion /> : <RadioQuestion />)}
 
         {quizStatus === 'finishing' && <FinishQuiz />}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 export default Quiz;

@@ -4,35 +4,39 @@ import './header.scss';
 const Header = () => {
   return (
     <header className="header">
-      <div className="header--desktop">
-        <h1 className="logo">
-          P<span>laceholder</span>
-        </h1>
+      <h1 className="logo">
+        P<span>laceholder</span>
+      </h1>
 
-        <nav className="nav">
-          <ul className="nav__list">
+      <nav className="nav">
+        <ul className="nav__list">
+          <li>
             <NavLink to="." className="nav__link" title="Return home">
-              <li>Home</li>
+              Home
             </NavLink>
+          </li>
 
+          <li>
             <NavLink
               to="all-quizzes"
               className="nav__link"
               title="View all quizzes"
             >
-              <li>All Quizzes</li>
+              All Quizzes
             </NavLink>
+          </li>
 
+          <li>
             <NavLink
               to="challenges"
               className="nav__link"
               title="View all challenges"
             >
-              <li>Challenges</li>
+              Challenges
             </NavLink>
-          </ul>
-        </nav>
-      </div>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };

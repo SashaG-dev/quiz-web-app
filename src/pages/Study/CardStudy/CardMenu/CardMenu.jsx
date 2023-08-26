@@ -52,6 +52,8 @@ const CardMenu = () => {
                   title={`Change cards color to ${color}`}
                   onClick={(e) => dispatchColor(e, color)}
                   onKeyDown={(e) => dispatchColor(e, color)}
+                  role="button"
+                  aria-label={`Change flashcards to the color ${color}`}
                 >
                   &nbsp;
                 </div>
@@ -63,10 +65,11 @@ const CardMenu = () => {
         <button
           type="button"
           className={`card-menu__btn ${setOpenClass('isOpen')}`}
-          title="Open flashcard settings"
+          title="Toggle flashcard settings"
           onClick={() => setToggleMenu((menu) => !menu)}
+          aria-label="toggle flashcard settings"
         >
-          <FaGear />
+          <FaGear aria-hidden="true" />
         </button>
       </div>
       <button
@@ -75,6 +78,7 @@ const CardMenu = () => {
         }
         title="Switch to notes"
         className="btn btn--blue card-menu__btn--switch"
+        aria-label="Switch to notes-style study session"
       >
         Use Notes
       </button>

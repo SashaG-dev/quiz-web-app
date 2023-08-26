@@ -23,6 +23,7 @@ const Study = () => {
           dispatch({ type: SWITCH_STUDY, payload: { studyType: 'flashcards' } })
         }
         title="Switch to flashcards"
+        aria-label="Switch to flashcard-style study session"
       >
         Use Flashcards
       </button>
@@ -30,17 +31,19 @@ const Study = () => {
   };
 
   return (
-    <div className="study container container--grid">
-      <QuizNav status={status}>
-        {status === 'starting' &&
-          (type === 'notes' ? <NotesLink /> : <CardMenu />)}
-      </QuizNav>
-      <div className="study__container">
+    <main className="study container container--grid">
+      <header role="banner">
+        <QuizNav status={status}>
+          {status === 'starting' &&
+            (type === 'notes' ? <NotesLink /> : <CardMenu />)}
+        </QuizNav>
+      </header>
+      <section className="study__container" aria-label="study session">
         {status === 'waiting' && <StartStudy />}
         {status === 'starting' &&
           (type === 'notes' ? <NoteLayout /> : <CardLayout />)}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 export default Study;

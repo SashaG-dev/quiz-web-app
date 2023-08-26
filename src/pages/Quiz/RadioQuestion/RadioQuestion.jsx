@@ -51,7 +51,10 @@ const RadioQuestion = () => {
   };
 
   return (
-    <div className="radio-question">
+    <div
+      className="radio-question"
+      aria-label={`Question ${index + 1} of ${questions.length}`}
+    >
       {toggleError && <ErrorTop text="✋ Wait! Choose an answer first." />}
 
       <h1 className="radio-question__heading">

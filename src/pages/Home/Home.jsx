@@ -3,10 +3,10 @@ import ResourceList from './Resources/ResourceList';
 
 const Home = () => {
   return (
-    <div>
+    <main>
       <Carousel />
       <ResourceList />
-    </div>
+    </main>
   );
 };
 export default Home;

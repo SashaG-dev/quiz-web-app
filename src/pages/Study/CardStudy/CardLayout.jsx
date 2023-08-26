@@ -45,8 +45,9 @@ const CardLayout = () => {
           onClick={() => handleClick('prev')}
           className="btn card-layout__btn"
           title={index === 0 ? '' : 'Go to previous flashcard'}
+          aria-label={index === 0 ? '' : 'Go to previous flashcard'}
         >
-          <BsArrowLeft />
+          <BsArrowLeft aria-hidden="true" />
           previous
         </button>
 
@@ -55,9 +56,12 @@ const CardLayout = () => {
           onClick={() => handleClick('next')}
           className="btn card-layout__btn"
           title={index === questions.length - 1 ? '' : 'Go to next flashcard'}
+          aria-label={
+            index === questions.length - 1 ? '' : 'Go to next flashcard'
+          }
         >
           next
-          <BsArrowRight />
+          <BsArrowRight aria-hidden="true" />
         </button>
         <Link
           to={`/quiz/${link}`}

@@ -36,7 +36,10 @@ const TypedQuestion = () => {
   };
 
   return (
-    <div className="typed-question">
+    <div
+      className="typed-question"
+      aria-label={`Question ${index + 1} of ${questions.length}`}
+    >
       {toggleError && <ErrorTop text="✋ Wait! Enter an answer first." />}
       <TextInput
         title={questions[index].question}
@@ -45,6 +48,8 @@ const TypedQuestion = () => {
         func={handleChange}
         placeholder={index < 1 ? 'Answer here!' : ''}
         ref={inputRef}
+        name="quiz"
+        id="quiz"
       />
 
       <div className="typed-question__btn-container">

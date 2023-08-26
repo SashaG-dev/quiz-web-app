@@ -5,9 +5,11 @@ import Note from './Note/Note';
 import './note-layout.scss';
 
 const NoteLayout = () => {
-  const [hideText, setHideText] = useState(true);
+  const [hideText, setHideText] = useState(false);
 
   useEffect(() => {
+    const noteContainer = document.querySelector('.note-layout__container');
+
     const checkNoteAnswers = (e) => {
       if (e.target.classList.contains('note__answer')) {
         const answers = Array.from(document.querySelectorAll('.note__answer'));
@@ -16,10 +18,10 @@ const NoteLayout = () => {
       }
     };
 
-    document.addEventListener('click', checkNoteAnswers);
+    noteContainer.addEventListener('click', checkNoteAnswers);
 
     return () => {
-      document.removeEventListener('click', checkNoteAnswers);
+      noteContainer.removeEventListener('click', checkNoteAnswers);
     };
   }, []);
 
@@ -32,6 +34,7 @@ const NoteLayout = () => {
     questions.map((question) => {
       if (question.id === id) {
         e.target.classList.remove('hide');
+        e.target.title = '';
       }
     });
   };
@@ -56,6 +59,9 @@ const NoteLayout = () => {
           className="button btn"
           title={`${hideText ? 'Show all answers' : 'Hide all answers'}`}
           onClick={() => setHideText((prev) => !prev)}
+          aria-label={`${
+            hideText ? 'Show all quiz answers' : 'Hide all quiz answers'
+          }`}
         >
           {`${hideText ? 'Show answers' : 'Hide answers'}`}
         </button>

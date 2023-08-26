@@ -1,7 +1,6 @@
 import './quiz-result.scss';
 
 const QuizResult = ({ answer, question, userAnswer, i }) => {
-  // console.log(answer, question, userAnswer, i);
   return (
     <div className="quiz-result">
       <h2 className="quiz-result__heading">Question {i + 1}</h2>

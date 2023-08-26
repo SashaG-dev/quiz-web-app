@@ -13,14 +13,15 @@ const CloseModal = (props) => {
   return (
     <>
       <div className="overlay" onClick={closeModal}></div>
-      <div className="modal">
+      <div className="modal" role="alertdialog">
         <button
           className="modal__close btn"
           title="Close modal"
           onClick={closeModal}
           ref={modalRef}
+          aria-label="close"
         >
-          <BsXLg />
+          <BsXLg aria-hidden="true" />
         </button>
         <h2 className="heading-secondary modal__heading">{text}</h2>
         {subheading && <p className="modal__subheading">{subheading}</p>}
@@ -30,6 +31,7 @@ const CloseModal = (props) => {
             className="btn btn--blue button"
             onClick={func}
             title={btnText}
+            aria-label={btnText}
           >
             {btnText}
           </button>
@@ -37,6 +39,7 @@ const CloseModal = (props) => {
             className="btn button"
             onClick={closeModal}
             title="Close modal"
+            aria-label="close modal"
           >
             Cancel
           </button>

@@ -12,6 +12,8 @@ const Note = ({ answer, id, question, func, state }) => {
         className={`note__answer ${toggleHide()}`}
         tabIndex={0}
         onClick={(e) => func(e, id)}
+        title={state ? 'Reveal answer' : ''}
+        role="button"
       >
         {answer}
       </p>

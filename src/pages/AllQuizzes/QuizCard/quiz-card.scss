@@ -37,7 +37,8 @@
       display: none;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       padding: 0.4rem;
       height: auto;
       width: auto;

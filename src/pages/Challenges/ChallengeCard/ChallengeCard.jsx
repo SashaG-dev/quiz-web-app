@@ -6,6 +6,7 @@ const ChallengeCard = ({ heading, description, link, difficulty }) => {
   return (
     <div className="challenge-card">
       <div
+        title={`difficulty: ${difficulty}`}
         className={`challenge-card__difficulty ${displayDifficulty(
           difficulty,
           'challenge-card__difficulty'

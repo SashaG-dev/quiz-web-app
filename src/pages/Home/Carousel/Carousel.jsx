@@ -41,32 +41,36 @@ const Carousel = () => {
     };
   });
 
-  const cards = carouselCardData.map((data) => {
-    return <CarouselCard key={data.id} {...data} />;
+  const cards = carouselCardData.map((data, i) => {
+    return <CarouselCard key={data.id} {...data} slide={i + 1} />;
   });
 
   return (
-    <div className="carousel">
+    <section className="carousel" aria-label="hero carousel">
       <div className="carousel__wrapper">
         <button
           className="carousel__btn carousel__btn--left left"
           title="View the previous slide"
           onClick={handleSlides}
+          aria-label="Go to the previous slide"
         >
-          {<BsArrowLeft />}
+          {<BsArrowLeft aria-hidden="true" />}
         </button>
 
-        <div className="carousel__container">{cards[card]}</div>
+        <div className="carousel__container" role="group">
+          {cards[card]}
+        </div>
 
         <button
           className="carousel__btn carousel__btn--right right"
           title="View the next slide"
           onClick={handleSlides}
+          aria-label="Go to the next slide"
         >
-          {<BsArrowRight />}
+          {<BsArrowRight aria-hidden="true" />}
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 export default Carousel;

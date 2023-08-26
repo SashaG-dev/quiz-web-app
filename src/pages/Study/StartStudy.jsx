@@ -17,9 +17,12 @@ const StartStudy = () => {
         <h1 className="start__heading">{title}</h1>
         <p className="start__subheading">Topics covered: {topics}</p>
         <form className="start__options">
-          <h3 className="start__options-heading heading-tertiary mb-sm">
+          <h2
+            className="start__options-heading heading-tertiary mb-sm"
+            id="study-label"
+          >
             Pick your study style:
-          </h3>
+          </h2>
           <div className="start__row">
             <Radio
               name="type"
@@ -43,6 +46,8 @@ const StartStudy = () => {
             type="button"
             className="start__btn btn btn--blue"
             onClick={(e) => handleStart(e, dispatch, START)}
+            aria-label="start studying"
+            title="Start studying"
           >
             Let's Start
           </button>

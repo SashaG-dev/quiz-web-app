@@ -26,7 +26,7 @@ const QuizLayout = () => {
   const initialState = {
     score: 0,
     index: 0,
-    quizStatus: 'waiting',
+    quizStatus: 'starting',
     type: 'multiple',
     answers: [],
   };

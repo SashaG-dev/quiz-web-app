@@ -21,12 +21,15 @@ const Challenges = () => {
   const { challenges } = useLoaderData();
 
   return (
-    <section className="challenges">
+    <main className="challenges">
       <Suspense fallback={<Loading />}>
         <Await resolve={challenges}>
           {(challenges) => {
             return (
-              <div className="challenges__container container">
+              <section
+                className="challenges__container container"
+                aria-label="all challenges"
+              >
                 {challenges.map((challenge) => {
                   return (
                     <ChallengeCard
@@ -35,12 +38,12 @@ const Challenges = () => {
                     />
                   );
                 })}
-              </div>
+              </section>
             );
           }}
         </Await>
       </Suspense>
-    </section>
+    </main>
   );
 };
 export default Challenges;

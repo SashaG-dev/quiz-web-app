@@ -6,7 +6,7 @@ import './resource-list.scss';
 const ResourceList = () => {
   const allSources = resourcesData.map((data) => data);
   return (
-    <section className="resources">
+    <section className="resources" aria-label="Need more study time?">
       <h2 className="resources__heading heading-secondary mb-sm">
         Need more study time?
       </h2>

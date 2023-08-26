@@ -6,6 +6,7 @@ const Button = ({ func, title }) => {
       onClick={(e) => func(e)}
       className="button btn btn--blue"
       title={title}
+      aria-label={title}
     >
       {title}
     </button>

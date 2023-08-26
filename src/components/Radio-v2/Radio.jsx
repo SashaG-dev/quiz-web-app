@@ -6,6 +6,8 @@ const Radio = ({ name, value, func, state, title }) => {
       htmlFor={value}
       className={`radio__label--2 ${state === value ? 'selected' : ''}`}
       tabIndex={0}
+      role="radio"
+      aria-checked={state === value}
     >
       <input
         type="radio"
