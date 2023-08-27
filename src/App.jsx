@@ -4,20 +4,20 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home/Home';
-import AllQuizzes, {
-  loader as quizzesLoader,
-} from './pages/AllQuizzes/AllQuizzes';
-import QuizLayout, { loader as quizLoader } from './pages/Quiz/QuizLayout';
-import StudyLayout, { loader as studyLoader } from './pages/Study/StudyLayout';
-import Challenges, {
-  loader as challengesLoader,
-} from './pages/Challenges/Challenges';
-import Challenge, {
-  loader as challengeLoader,
-} from './pages/Challenge/Challenge';
+const AllQuizzes = lazy(() => import('./pages/AllQuizzes/AllQuizzes'));
+const QuizLayout = lazy(() => import('./pages/Quiz/QuizLayout'));
+const StudyLayout = lazy(() => import('./pages/Study/StudyLayout'));
+const Challenges = lazy(() => import('./pages/Challenges/Challenges'));
+const Challenge = lazy(() => import('./pages/Challenge/Challenge'));
+import quizzesLoader from './pages/AllQuizzes/quizzesLoader';
+import quizLoader from './pages/Quiz/quizLoader';
+import challengesLoader from './pages/Challenges/challengesLoader';
+import challengeLoader from './pages/Challenge/challengeLoader';
 import NotFound from './components/NotFound/NotFound';
+import Loading from './components/Loading/Loading';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,14 +50,18 @@ const router = createBrowserRouter(
       </Route>
       <Route path="study" errorElement={<NotFound />}>
         <Route index element={<h1>Placeholder</h1>} />
-        <Route path=":id" element={<StudyLayout />} loader={studyLoader} />
+        <Route path=":id" element={<StudyLayout />} loader={quizLoader} />
       </Route>
     </Route>
   )
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;
