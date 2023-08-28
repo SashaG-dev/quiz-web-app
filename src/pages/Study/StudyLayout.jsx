@@ -16,6 +16,10 @@ const StudyLayout = () => {
     type: 'flashcards',
     flashcards: {
       cardColor: 'white',
+      hideTutorial: localStorage.getItem('flashcards') || false,
+    },
+    notes: {
+      hideTutorial: localStorage.getItem('notes') || false,
     },
   };
 

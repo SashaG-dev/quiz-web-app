@@ -13,7 +13,7 @@ const CloseModal = (props) => {
   return (
     <>
       <div className="overlay" onClick={closeModal}></div>
-      <div className="modal" role="alertdialog">
+      <div className="modal modal--center" role="alertdialog">
         <button
           className="modal__close btn"
           title="Close modal"

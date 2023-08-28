@@ -3,9 +3,6 @@
 
 .modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 30;
   text-align: center;
   background-color: var(--white);
@@ -15,6 +12,19 @@
   gap: 1.6rem;
   border-radius: var.$radius-md;
   max-width: 64rem;
+
+  &--center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--tutorial {
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border: var.$border-gray;
+  }
 
   @include mix.respond(tab-sm) {
     min-width: 48rem;
@@ -50,5 +60,9 @@
     @include mix.respond(phone-land) {
       flex-direction: column;
     }
+  }
+
+  &__btn {
+    font-size: 1.8rem;
   }
 }

@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useStudyContext } from '../StudyLayout';
-import { TOGGLE_CARD } from '../studyReducer';
+import { TOGGLE_CARD, HIDE_TUTORIAL } from '../studyReducer';
 import FlashCard from './FlashCard/FlashCard';
+import CardTutorial from './CardTutorial';
+import { closeTutorial } from '../../../utils';
 import './card-layout.scss';
 
 const CardLayout = () => {
@@ -12,6 +14,7 @@ const CardLayout = () => {
     questions,
     index,
     dispatch,
+    flashcards: { hideTutorial },
   } = useStudyContext();
 
   const [cardEffects, setCardEffects] = useState({
@@ -27,12 +30,22 @@ const CardLayout = () => {
   }, [index]);
 
   const handleClick = (direction) => {
-    setCardEffects({ isFlipped: false, toggleAnimate: false });
-    dispatch({ type: TOGGLE_CARD, payload: { direction: direction } });
+    if (!tutorial) {
+      setCardEffects({ isFlipped: false, toggleAnimate: false });
+      dispatch({ type: TOGGLE_CARD, payload: { direction: direction } });
+    }
   };
 
   return (
     <div className="card-layout">
+      {hideTutorial ? (
+        ''
+      ) : (
+        <CardTutorial
+          func={() => closeTutorial(dispatch, HIDE_TUTORIAL, 'flashcards')}
+        />
+      )}
+
       <FlashCard
         {...questions[index]}
         state={cardEffects}

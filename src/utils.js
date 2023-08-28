@@ -24,3 +24,7 @@ export const scrollToTop = () => {
   window.scrollTo(0, 0);
   useEffect(() => {}, [pathname]);
 };
+
+export const closeTutorial = (dispatch, type, studyType) => {
+  dispatch({ type: type, payload: { tutorial: studyType } });
+};

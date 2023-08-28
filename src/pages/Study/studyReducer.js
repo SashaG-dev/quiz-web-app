@@ -3,6 +3,7 @@ export const START = 'START';
 export const TOGGLE_CARD = 'TOGGLE_CARD';
 export const TOGGLE_COLOR = 'TOGGLE_COLOR';
 export const SWITCH_STUDY = 'SWITCH_STUDY';
+export const HIDE_TUTORIAL = 'HIDE_TUTORIAL';
 
 export const studyReducer = (state, action) => {
   if (action.type === CHANGE_TYPE) {
@@ -29,6 +30,14 @@ export const studyReducer = (state, action) => {
   if (action.type === SWITCH_STUDY) {
     const newType = action.payload.studyType;
     return { ...state, type: newType };
+  }
+  if (action.type === HIDE_TUTORIAL) {
+    const tutorial = action.payload.tutorial;
+    localStorage.setItem(tutorial, false);
+    return {
+      ...state,
+      [tutorial]: { ...state[tutorial], hideTutorial: true },
+    };
   }
   return state;
 };

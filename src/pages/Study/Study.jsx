@@ -8,12 +8,7 @@ import { SWITCH_STUDY } from './studyReducer';
 import './study.scss';
 
 const Study = () => {
-  const {
-    status,
-    type,
-    details: { link, title },
-    dispatch,
-  } = useStudyContext();
+  const { status, type, dispatch } = useStudyContext();
 
   const NotesLink = () => {
     return (
