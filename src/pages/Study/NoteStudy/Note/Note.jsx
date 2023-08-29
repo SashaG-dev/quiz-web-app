@@ -14,6 +14,7 @@ const Note = ({ answer, id, question, func, state }) => {
         onClick={(e) => func(e, id)}
         title={state ? 'Reveal answer' : ''}
         role="button"
+        onKeyDown={(e) => func(e, id)}
       >
         {answer}
       </p>
