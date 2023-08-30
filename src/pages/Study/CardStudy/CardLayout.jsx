@@ -30,10 +30,8 @@ const CardLayout = () => {
   }, [index]);
 
   const handleClick = (direction) => {
-    if (!tutorial) {
-      setCardEffects({ isFlipped: false, toggleAnimate: false });
-      dispatch({ type: TOGGLE_CARD, payload: { direction: direction } });
-    }
+    setCardEffects({ isFlipped: false, toggleAnimate: false });
+    dispatch({ type: TOGGLE_CARD, payload: { direction: direction } });
   };
 
   return (

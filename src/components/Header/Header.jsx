@@ -5,7 +5,8 @@ const Header = () => {
   return (
     <header className="header">
       <h1 className="logo">
-        P<span>laceholder</span>
+        <span className="logo--desktop">Frontend Quizzes</span>
+        <span className="logo--mobile">FQ</span>
       </h1>
 
       <nav className="nav">
